@@ -1,0 +1,2863 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset='utf-8'>
+    <title>calibre - What's new</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    
+    <meta name="keywords" content="e-book,ebook,library,calibre,software,news,digital text,free,open source" />
+    <meta name="description" content="calibre: The one stop solution for all your e-book needs. Comprehensive e-book software." />
+    
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    
+    <!-- Quantcast Choice. Consent Manager Tag v2.0 (for TCF 2.0) -->
+<!-- See https://www.quantcast.com/protect/sites username is email -->
+<script type="text/javascript" async=true>
+(function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://quantcast.mgr.consensu.org'
+    .concat('/choice/', '593Yp13RM2k2D', '/', host, '/choice.js')
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+
+  firstScript.parentNode.insertBefore(element, firstScript);
+
+  function makeStub() {
+    var TCF_LOCATOR_NAME = '__tcfapiLocator';
+    var queue = [];
+    var win = window;
+    var cmpFrame;
+
+    function addFrame() {
+      var doc = win.document;
+      var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+
+      if (!otherCMP) {
+        if (doc.body) {
+          var iframe = doc.createElement('iframe');
+
+          iframe.style.cssText = 'display:none';
+          iframe.name = TCF_LOCATOR_NAME;
+          doc.body.appendChild(iframe);
+        } else {
+          setTimeout(addFrame, 5);
+        }
+      }
+      return !otherCMP;
+    }
+
+    function tcfAPIHandler() {
+      var gdprApplies;
+      var args = arguments;
+
+      if (!args.length) {
+        return queue;
+      } else if (args[0] === 'setGdprApplies') {
+        if (
+          args.length > 3 &&
+          args[2] === 2 &&
+          typeof args[3] === 'boolean'
+        ) {
+          gdprApplies = args[3];
+          if (typeof args[2] === 'function') {
+            args[2]('set', true);
+          }
+        }
+      } else if (args[0] === 'ping') {
+        var retr = {
+          gdprApplies: gdprApplies,
+          cmpLoaded: false,
+          cmpStatus: 'stub'
+        };
+
+        if (typeof args[2] === 'function') {
+          args[2](retr);
+        }
+      } else {
+        queue.push(args);
+      }
+    }
+
+    function postMessageEventHandler(event) {
+      var msgIsString = typeof event.data === 'string';
+      var json = {};
+
+      try {
+        if (msgIsString) {
+          json = JSON.parse(event.data);
+        } else {
+          json = event.data;
+        }
+      } catch (ignore) {}
+
+      var payload = json.__tcfapiCall;
+
+      if (payload) {
+        window.__tcfapi(
+          payload.command,
+          payload.version,
+          function(retValue, success) {
+            var returnMsg = {
+              __tcfapiReturn: {
+                returnValue: retValue,
+                success: success,
+                callId: payload.callId
+              }
+            };
+            if (msgIsString) {
+              returnMsg = JSON.stringify(returnMsg);
+            }
+            event.source.postMessage(returnMsg, '*');
+          },
+          payload.parameter
+        );
+      }
+    }
+
+    while (win) {
+      try {
+        if (win.frames[TCF_LOCATOR_NAME]) {
+          cmpFrame = win;
+          break;
+        }
+      } catch (ignore) {}
+
+      if (win === window.top) {
+        break;
+      }
+      win = win.parent;
+    }
+    if (!cmpFrame) {
+      addFrame();
+      win.__tcfapi = tcfAPIHandler;
+      win.addEventListener('message', postMessageEventHandler, false);
+    }
+  };
+
+  makeStub();
+
+  var uspStubFunction = function() {
+    var arg = arguments;
+    if (typeof window.__uspapi !== uspStubFunction) {
+      setTimeout(function() {
+        if (typeof window.__uspapi !== 'undefined') {
+          window.__uspapi.apply(window.__uspapi, arg);
+        }
+      }, 500);
+    }
+  };
+
+  var checkIfUspIsReady = function() {
+    uspTries++;
+    if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) {
+      console.warn('USP is not accessible');
+    } else {
+      clearInterval(uspInterval);
+    }
+  };
+
+  if (typeof window.__uspapi === 'undefined') {
+    window.__uspapi = uspStubFunction;
+    var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+})();
+</script>
+<!-- End Quantcast Choice. Consent Manager Tag v2.0 (for TCF 2.0) -->
+    <script data-cfasync="false" type="text/javascript">
+    var freestar = freestar || {};
+    freestar.hitTime = Date.now();
+    freestar.queue = freestar.queue || [];
+    freestar.config = freestar.config || {};
+    freestar.debug = window.location.search.indexOf('fsdebug') === -1 ? false : true;
+    freestar.config.enabled_slots = [];
+    !function(a,b){var c=b.getElementsByTagName("script")[0],d=b.createElement("script"),e="https://a.pub.network/calibre-ebook-com";e+=freestar.debug?"/qa/pubfig.min.js":"/pubfig.min.js",d.async=!0,d.src=e,c.parentNode.insertBefore(d,c)}(window,document);
+    freestar.initCallback = function () { (freestar.config.enabled_slots.length === 0) ? freestar.initCallbackCalled = false : freestar.newAdSlots(freestar.config.enabled_slots) }
+    </script>
+    
+
+    <link rel="alternate" type="application/rss+xml" href="/changelog.rss" title="RSS feed of the calibre changelog" />
+
+    <!-- jQuery and associated tools -->
+    <script type="text/javascript" src="/resources/js/jquery.tools.min.js"></script>
+
+    <!-- YUI CSS foundation -->
+    <link rel="stylesheet" type="text/css" href="/resources/styles/yui.css" />
+
+    <!-- Master CSS -->
+    <link rel="stylesheet" type="text/css" href="/resources/styles/base.css" />
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-20736318-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-20736318-1');
+    </script>
+    
+
+    
+<link rel="stylesheet" type="text/css" href="/resources/styles/tabs.css" />
+
+<style type="text/css">
+
+    h2.release-title {
+        font-family: monospace;
+        color: white;
+        background: black;
+        border: 3px solid white;
+        text-align: center;
+        padding: 0.3em;
+    }
+
+    p.description {
+        margin-left: 2em;
+        max-width: 500px;
+        font-size: smaller;
+    }
+
+    .pane { overflow-wrap: anywhere; }
+
+    p.tickets {
+        margin-left: 2em;
+        font-size: smaller;
+    }
+
+    .major .title {
+        font-weight: bold;
+    }
+
+    p#full-list { margin-top: 1ex; }
+
+</style>
+
+<script type="text/javascript">
+    //<![CDATA[
+    $(document).ready(function() {
+            $("ul.tabs").tabs("div.panes > div");
+
+            $(".tabs a[title]").tooltip({
+                position : 'bottom center',
+            });
+    });
+    //]]>
+</script>
+
+
+
+</head>
+
+<body onload="document.getElementById('content-wrapper').focus()"><div id="grid">
+    
+    <div id="header">
+        
+        <h1><a href="/">Calibre E-Book Management</a></h1>
+        
+        <ul id="primary-nav">
+            
+            <li><a id="nav-about" href="/about" title="The features and history of calibre">About Calibre</a></li>
+            <li><a id="nav-demo" href="/demo" title="See calibre in action">Demo</a></li>
+            <li><a id="nav-download" href="/download" title="Download calibre for your operating system">Download</a></li>
+            <li><a id="nav-help" href="/help" title="Get help on using calibre">Help</a></li>
+            <li><a id="nav-whats-new" href="/whats-new" title="What's new in calibre world">What's New</a></li>
+            <li><a id="nav-get-involved" href="/get-involved" title="Contribute to calibre">Get Involved</a></li>
+            <li><a id="nav-bugs" href="/bugs" title="Report bugs / enhancement requests">Bugs</a></li>
+            
+            <li><a id="nav-lang" href="javascript:choose_language()" title="Change the language of this website">Language</a></li>
+            
+            
+        </ul>
+        <div title="Support calibre development" id="donate" alt="Contribute to support calibre development" rel="#donate_box" data-location="top_banner" style="cursor:pointer; border:none" >Support Calibre</div>
+    </div>
+    
+    <div id="content-wrapper" class="yui-cssbase" tabindex="-1">
+        <div id="content">
+            
+<h1>What's new</h1>
+
+
+<p><a href="/new-in/fourteen" title="What's new in calibre 5.0">See what's new in calibre 5.0</a></p>
+
+<ul class="tabs">
+    <li><a href="#" title="List of changes in each calibre release">Changelog</a></li>
+    <li><a href="#" title="Major new features in recent releases">Major new features</a></li>
+</ul>
+
+<div class="panes">
+    
+    <div class="pane" id="release-pane">
+        
+        <div class="release">
+            <h2 class="release-title">Release: 5.16 [17 Apr, 2021]</h2>
+<h3 class="category">Bug fixes</h3><ul class="entries">
+<li class="minor"><span class="title">CHM Input: Fix handling of some CHM files that use non-ASCII internal filenames and dont specify a character encoding in their metadata</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1924703" target="_blank">1924703</a></p>
+</li>
+<li class="minor"><span class="title">Fix a regression in the previous release that prevented calibre from starting if there was a failure in a third party plugin</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1924824" target="_blank">1924824</a></p>
+</li>
+<li class="minor"><span class="title">Content server viewer: Fix a regression in the previous that broke handling of URLs in stylesheets</span>
+</li>
+<li class="minor"><span class="title">Fix a regression in the previous release that broke changing sections in the convert single book dialog after changing the input or output formats</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1924767" target="_blank">1924767</a></p>
+</li>
+<li class="minor"><span class="title">Fix using 'is set' rules not working for column rules with rating values</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1924675" target="_blank">1924675</a></p>
+</li>
+</ul>
+<h3 class="category">New news sources</h3>
+<ul class="entries">
+<li>The Saturday paper by Alistair Francis</li>
+</ul>
+        </div>
+        
+        <div class="release">
+            <h2 class="release-title">Release: 5.15 [16 Apr, 2021]</h2>
+<h3 class="category">New features</h3><ul class="entries">
+<li class="minor"><span class="title">Allow auto scrolling through the list of books by pressing the X key or right clicking on the cover browser</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1917634" target="_blank">1917634</a></p>
+<p class="description">Useful to have a "slideshow" of book covers. The speed of scrolling can be controlled in Preferences-&gt;Look &amp; feel-&gt;Cover browser</p>
+</li>
+<li class="minor"><span class="title">E-book viewer: Speed up first time open for EPUB files with lots of styling</span>
+</li>
+<li class="minor"><span class="title">E-book viewer preferences: Allow searching for keyboard shortcuts</span>
+</li>
+<li class="minor"><span class="title">Edit book: Allow editing WEBP images</span>
+</li>
+<li class="minor"><span class="title">Various improvements to the template language, see <a href="https://www.mobileread.com/forums/showthread.php?t=337573">https://www.mobileread.com/forums/showthread.php?t=337573</a></span>
+</li>
+<li class="minor"><span class="title">E-book viewer: Show the current progress percentage in the bottom bar of the viewer controls. This can be customized in the viewer preferences under Headers and footers</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1921610" target="_blank">1921610</a></p>
+</li>
+<li class="minor"><span class="title">E-book viewer: Add an option under Preferences-&gt;Miscellaneous to not restore open panels such as Search, Table of Contents etc on restart</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1921689" target="_blank">1921689</a></p>
+</li>
+<li class="minor"><span class="title">When exporting highlights as text or markdown also output top level chapter titles</span>
+</li>
+<li class="minor"><span class="title">Allow downloading metadata from amazon.se</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1922327" target="_blank">1922327</a></p>
+</li>
+<li class="minor"><span class="title">Preferences-&gt;Tweaks: Allow specifying that calibre should open the book details window when double clicking on a book</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1922591" target="_blank">1922591</a></p>
+</li>
+<li class="minor"><span class="title">MOBI Output: Convert WebP images to PNG so they work with Amazon's software</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1922341" target="_blank">1922341</a></p>
+</li>
+<li class="minor"><span class="title">DOCX Input: When converting embedded fonts, replace spaces in the filename with underscores to keep the execrable epubcheck happy</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1921793" target="_blank">1921793</a></p>
+</li>
+<li class="minor"><span class="title">E-book viewer: Selection bar: Add keyboard shortcuts for all buttons. Hover over a button in the bar to see the shortcut</span>
+</li>
+</ul>
+<h3 class="category">Bug fixes</h3><ul class="entries">
+<li class="minor"><span class="title">FB2 Output: Fix a regression in calibre 5 that caused paragraphs containing only non-breaking spaces to be removed</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1924232" target="_blank">1924232</a></p>
+</li>
+<li class="minor"><span class="title">Metadata comments editor: Fix setting block alignment destroying other block level properties</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1924187" target="_blank">1924187</a></p>
+</li>
+<li class="minor"><span class="title">E-book viewer: Fix margins not being adjusted immediately when preferences are changed</span>
+</li>
+<li class="minor"><span class="title">Edit book: Upgrade book internals: Fix skipping the NCX removal dialog not remembering the chosen option</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1921604" target="_blank">1921604</a></p>
+</li>
+<li class="minor"><span class="title">Conversion: When specifying a line-height do not apply it to the &lt;html&gt; tag, as it is pointless and causes the execrable epubcheck to complain</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1922570" target="_blank">1922570</a></p>
+</li>
+<li class="minor"><span class="title">E-book viewer: Improve scrolling behavior when extending the selection using keyboard shortcuts</span>
+</li>
+<li class="minor"><span class="title">E-book viewer: Fix read percent for HTML files that are rendered in a single screen being 0% rather than 100%</span>
+</li>
+<li class="minor"><span class="title">E-book viewer: Highlights panel: Do not expand all sections when adding/deleting/modifying highlights</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1924598" target="_blank">1924598</a></p>
+</li>
+<li class="minor"><span class="title">CHM Input: Fix a regression in calibre 5.0 that broke opening of some files that dont specify a character encoding</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1922503" target="_blank">1922503</a></p>
+</li>
+<li class="minor"><span class="title">EPUB2 metadata: Read ISBNs in identifier elements without schemes if they are valid ISBNs and no properly identified isbns are present</span>
+</li>
+<li class="minor"><span class="title">Update Amazon metadata plugin for changes to amazon websites</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1922309" target="_blank">1922309</a></p>
+</li>
+<li class="minor"><span class="title">Edit book: Fix detection of class names containing hyphens/underscores</span>
+</li>
+</ul>
+<h3 class="category">New news sources</h3>
+<ul class="entries">
+<li>Los Danieles – Columnas sin techo by CAVALENCIA</li>
+</ul>
+<h3 class="category">Improved news sources</h3>
+<ul class="entries">
+<li>New Scientist</li>
+<li>Irish Times</li>
+<li>1843</li>
+<li>The Straits Times</li>
+</ul>
+        </div>
+        
+        <div class="release">
+            <h2 class="release-title">Release: 5.14 [26 Mar, 2021]</h2>
+<h3 class="category">New features</h3><ul class="entries">
+<li class="minor"><span class="title">Edit book: When right clicking on a class in a HTML file, add an option to rename the class throughout the book</span>
+</li>
+<li class="minor"><span class="title">Adding from ISBN: Add an option to check if there are existing books with the specified ISBNs already in the library</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1919103" target="_blank">1919103</a></p>
+</li>
+<li class="minor"><span class="title">Template tester: Instead of next/last, the template tester now shows the template values for selected books</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1920576" target="_blank">1920576</a></p>
+</li>
+<li class="minor"><span class="title">Content server: Allow swiping left and right to show next/previous book on the book details page</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1918047" target="_blank">1918047</a></p>
+</li>
+<li class="minor"><span class="title">E-book viewer: Make the commonly used Shift+Arrow key shortcuts for modifying selections using the keyboard work. Also add shortcuts for selecting by character, line and paragraph.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1919072" target="_blank">1919072</a></p>
+</li>
+</ul>
+<h3 class="category">Bug fixes</h3><ul class="entries">
+<li class="minor"><span class="title">MOBI Output: Fix latest Kindle firmware not displaying select publisher font option for calibre produced AZW3 files</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1920613" target="_blank">1920613</a></p>
+</li>
+<li class="minor"><span class="title">E-book viewer: Fix errors when viewing books with mathematics that are split over multiple internal files</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1919033" target="_blank">1919033</a></p>
+</li>
+<li class="minor"><span class="title">Content server viewer: Fix highlights not sorted correctly in the highlights panel</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1918436" target="_blank">1918436</a></p>
+</li>
+<li class="minor"><span class="title">Get books: Fix Smashwords plugin not working because of website changes</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1918737" target="_blank">1918737</a></p>
+</li>
+<li class="minor"><span class="title">Improve the performance of QuickView especially when using composite columns</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1920733" target="_blank">1920733</a></p>
+</li>
+<li class="minor"><span class="title">Improve performance of the virtual_libraries() template function</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1918428" target="_blank">1918428</a></p>
+</li>
+<li class="minor"><span class="title">Browser viewer: Fix Go to Location not working for positions</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1920250" target="_blank">1920250</a></p>
+</li>
+<li class="minor"><span class="title">E-book viewer: Fix searching in the Table of Contents not working</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1905257" target="_blank">1905257</a></p>
+</li>
+<li class="minor"><span class="title">E-book viewer: In paged mode, fix scrolling not working correctly when margins are set to zero</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1918105" target="_blank">1918105</a></p>
+</li>
+<li class="minor"><span class="title">E-book viewer: Fix incorrect ToC navigation in books that link the entries to inline tags that wrap block tags that span multiple pages</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1918437" target="_blank">1918437</a></p>
+</li>
+<li class="minor"><span class="title">Category editor: Searching in library shouldn't automatically open Quickview</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1920592" target="_blank">1920592</a></p>
+</li>
+<li class="minor"><span class="title">Conversion: Fix a hang caused by long sequences of non-word characters when heuristics are enabled, either explicitly or for some input formats such as TXT</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1919260" target="_blank">1919260</a></p>
+</li>
+<li class="minor"><span class="title">Fix a regression in calibre 5 that broke --explode-book and --implode-book actions for calibre-debug.exe</span>
+</li>
+<li class="minor"><span class="title">Fix a regression in calibre 5 that broke setting metadata in RTF files</span>
+</li>
+</ul>
+<h3 class="category">New news sources</h3>
+<ul class="entries">
+<li>ZackZack.at by Dirk Gomez</li>
+</ul>
+        </div>
+        
+        <div class="release">
+            <h2 class="release-title">Release: 5.13 [10 Mar, 2021]</h2>
+<h3 class="category">New features</h3><ul class="entries">
+<li class="minor"><span class="title">E-book Viewer: Allow editing the current book by pressing Ctrl+D or adding a button for it to the viewer tool bar</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1917967" target="_blank">1917967</a></p>
+</li>
+<li class="minor"><span class="title">Edit book: Add a command line flag to allow selecting the specified text when opening a book</span>
+</li>
+<li class="minor"><span class="title">Edit metadata dialog: When trimming covers, show the size of the current trim region</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1917363" target="_blank">1917363</a></p>
+</li>
+</ul>
+<h3 class="category">Bug fixes</h3><ul class="entries">
+<li class="minor"><span class="title">Fix a regression in the previous release that broke sending of emails with text longer than 900 characters</span>
+</li>
+<li class="minor"><span class="title">E-book viewer: Fix using keyboard to extend selection not turning pages</span>
+</li>
+<li class="minor"><span class="title">Fix searching for items from the Manage dialog not working correctly</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1918030" target="_blank">1918030</a></p>
+</li>
+<li class="minor"><span class="title">PDF input: Replace paragraph separator characters with spaces</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1917386" target="_blank">1917386</a></p>
+</li>
+</ul>
+<h3 class="category">Improved news sources</h3>
+<ul class="entries">
+<li>The Conversation</li>
+</ul>
+        </div>
+        
+        <div class="release">
+            <h2 class="release-title">Release: 5.12 [26 Feb, 2021]</h2>
+<h3 class="category">New features</h3><ul class="entries">
+<li class="minor"><span class="title">E-book viewer: When searching start the search from the current position, jumping to the first match at or after the current page</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1915773" target="_blank">1915773</a></p>
+</li>
+<li class="minor"><span class="title">E-book viewer: Have the Table of Contents view automatically scroll to keep the chapter being read currently visible</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1916411" target="_blank">1916411</a></p>
+</li>
+<li class="minor"><span class="title">Various improvements to the calibre template language, see <a href="https://www.mobileread.com/forums/showthread.php?t=337573">https://www.mobileread.com/forums/showthread.php?t=337573</a></span>
+</li>
+<li class="minor"><span class="title">Edit book: File browser: Show total size of items in category when hovering over category with mouse</span>
+</li>
+<li class="minor"><span class="title">Kobo driver: Add support for latest firmware and also an option to choose the color used for cover letterboxing</span>
+</li>
+</ul>
+<h3 class="category">Bug fixes</h3><ul class="entries">
+<li class="minor"><span class="title">E-book viewer: Fix selection popup bar sometimes going off screen when dragging up to the top line of text</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1915685" target="_blank">1915685</a></p>
+</li>
+<li class="minor"><span class="title">Get books: Update the Biblio and Chitanka stores for website changes</span>
+</li>
+<li class="minor"><span class="title">Edit book: Fix editing of JavaScript files not working</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1915770" target="_blank">1915770</a></p>
+</li>
+</ul>
+<h3 class="category">Improved news sources</h3>
+<ul class="entries">
+<li>Slate</li>
+<li>Harper's Magazine</li>
+</ul>
+        </div>
+        
+        <div class="release">
+            <h2 class="release-title">Release: 5.11 [12 Feb, 2021]</h2>
+<h3 class="category">New features</h3><ul class="entries">
+<li class="minor"><span class="title">Edit book: Add a tool to split the tag at the current cursor position, creating a new tag with the same style and class attributes. To add the tool go to the Toolbars section in the editor preferences</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1912958" target="_blank">1912958</a></p>
+</li>
+<li class="minor"><span class="title">E-book viewer: Show the URL when hovering over external links</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1911107" target="_blank">1911107</a></p>
+</li>
+<li class="minor"><span class="title">E-book viewer: Redesign the reference mode to also work on touch screens without a mouse. Now in reference mode paragraph numbers are displayed for all paragraphs</span>
+</li>
+<li class="minor"><span class="title">Edit book: Allow Ctrl-clicking on class names to jump to the first style rule that matches the tag and class</span>
+</li>
+<li class="minor"><span class="title">Content server: When browsing highlights for a book allow selecting multiple highlights to delete or export quickly</span>
+</li>
+<li class="minor"><span class="title">Allow creating keyboard shortcuts to copy show and view URLs for selected books to clipboard</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1912954" target="_blank">1912954</a></p>
+</li>
+<li class="minor"><span class="title">calibredb: Add a timeout option to control the timeout when connecting to the calibre server</span>
+</li>
+</ul>
+<h3 class="category">Bug fixes</h3><ul class="entries">
+<li class="minor"><span class="title">Content server: Fix dragging selection handles not working in Safari</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1913854" target="_blank">1913854</a></p>
+</li>
+<li class="minor"><span class="title">E-book viewer: Fix links with a href of "#" not working</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1915303" target="_blank">1915303</a></p>
+</li>
+<li class="minor"><span class="title">E-book viewer: Hide the controls when clicking the back or forward buttons</span>
+</li>
+<li class="minor"><span class="title">E-book viewer: When jumping to a highlight using the highlights panel, the back button should return to position before jump</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1914921" target="_blank">1914921</a></p>
+</li>
+<li class="minor"><span class="title">E-book viewer: Fix incorrect tooltip when hovering over a section title in the search results list</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1914157" target="_blank">1914157</a></p>
+</li>
+<li class="minor"><span class="title">HTMLZ Output: Fix a regression in calibre 5 that broke creating HTMLZ documents when using the option to place CSS inline</span>
+</li>
+</ul>
+<h3 class="category">Improved news sources</h3>
+<ul class="entries">
+<li>Endgadget</li>
+</ul>
+        </div>
+        
+        <div class="release">
+            <h2 class="release-title">Release: 5.10.1 [22 Jan, 2021]</h2>
+<h3 class="category">New features</h3><ul class="entries">
+<li class="minor"><span class="title">Bulk metadata edit: Add a new control to compress the cover image files for all selected books</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1911888" target="_blank">1911888</a></p>
+</li>
+<li class="minor"><span class="title">Add support for the CB7 comic file file format</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1912212" target="_blank">1912212</a></p>
+</li>
+<li class="minor"><span class="title">E-book viewer: Allow adding a button to the selection bar that copies the currently selected text along with a calibre:// URL to show the text in the book</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1912070" target="_blank">1912070</a></p>
+</li>
+<li class="minor"><span class="title">Conversion: Insert metadata: Allow showing identifiers such as ISBN in the jacket page template</span>
+</li>
+<li class="minor"><span class="title">Conversion: Insert metadata: Allow hiding entries in the jacket template when they are not present in the metadata</span>
+</li>
+<li class="minor"><span class="title">calibre-server --manage-users: Add a scriptable interface: calibre-server --manage-users -- help</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1912337" target="_blank">1912337</a></p>
+</li>
+<li class="minor"><span class="title">E-book viewer: Add keyboard shortcuts to copy the current location to the clipboard</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1912070" target="_blank">1912070</a></p>
+</li>
+<li class="minor"><span class="title">E-book viewer: Highlight all currently visible Table of Contents entries, not just the first</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1912003" target="_blank">1912003</a></p>
+</li>
+<li class="minor"><span class="title">Add a new tweak under Preferences-&gt;Tweaks-&gt;Author sort name algorithm to optionally recognize common surname prefixes such as von, van, de, etc. when generating sort names.</span>
+</li>
+</ul>
+<h3 class="category">Bug fixes</h3><ul class="entries">
+<li class="minor"><span class="title">E-book viewer: Move read aloud pop-up bar to the bottom of the screen in flow mode</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1911470" target="_blank">1911470</a></p>
+</li>
+<li class="minor"><span class="title">E-book viewer: Fix scrolling with two fingers on touch pad on macOS not smooth</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1911218" target="_blank">1911218</a></p>
+</li>
+<li class="minor"><span class="title">PDF Output: When converting fixed layout input documents fix anchors inserted for navigation sometimes being rendered as blue boxes</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1911466" target="_blank">1911466</a></p>
+</li>
+<li class="minor"><span class="title">Edit book: Remove unused CSS: Fix selectors that don't match from CSS rules containing multiple selectors not being removed</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1904350" target="_blank">1904350</a></p>
+</li>
+<li class="minor"><span class="title">Bulk metadata download: Fix series number not being changes if the series is the same as the existing series</span>
+</li>
+<li class="minor"><span class="title">E-book viewer: Fix a regression that caused non-HTML descriptions to not be displayed in the metadata page</span>
+</li>
+<li class="minor"><span class="title">E-book viewer: Fix clock being displayed in 24 hr format on some systems even though system locale is set to use 12 hr format.</span>
+</li>
+<li class="minor"><span class="title">Bulk metadata edit: Fix regression that inverted the meaning of the case sensitivity setting in the Search &amp; replace tab</span>
+</li>
+<li class="minor"><span class="title">calibredb list: Fix incorrect output when redirecting to file</span>
+</li>
+<li class="minor"><span class="title">5.10.1 fixes a regression in 5.10.0 that broke conversion when including metadata as a jacket page and using long text custom columns</span>
+</li>
+</ul>
+<h3 class="category">Improved news sources</h3>
+<ul class="entries">
+<li>Jacobin</li>
+<li>Japan Times</li>
+<li>The Wall Street Journal</li>
+<li>Mediapart</li>
+</ul>
+        </div>
+        
+        <div class="release">
+            <h2 class="release-title">Release: 5.9 [08 Jan, 2021]</h2>
+<h3 class="category">New features</h3><ul class="entries">
+<li class="minor"><span class="title">Annotations: Allow exporting highlights and bookmarks in Markdown format, with a link to open the book at the highlight location</span>
+</li>
+<li class="minor"><span class="title">Content server viewer: Allow exporting all highlights</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1909529" target="_blank">1909529</a></p>
+</li>
+<li class="minor"><span class="title">Icon rules editor: Add a button to open the icons folder</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1909339" target="_blank">1909339</a></p>
+</li>
+<li class="minor"><span class="title">Quickview: Dropdown menu for all selectable columns</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1909258" target="_blank">1909258</a></p>
+</li>
+</ul>
+<h3 class="category">Bug fixes</h3><ul class="entries">
+<li class="minor"><span class="title">Fix a regression that caused the Content server to crash if a client closed a connection during a file transfer on macOS and Linux.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1909880" target="_blank">1909880</a>, <a href="https://bugs.launchpad.net/calibre/+bug/1906152" target="_blank">1906152</a></p>
+</li>
+<li class="minor"><span class="title">LRF Output: Fix conversion broken in calibre 5 when font size rescaling is active</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1909224" target="_blank">1909224</a></p>
+</li>
+<li class="minor"><span class="title">E-book viewer: Cancel any speech in progress when hiding the selection popup bar after triggering the speak aloud action on it</span>
+</li>
+<li class="minor"><span class="title">Color/icon rules editor: Fix duplicate rule button not working correctly</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1909332" target="_blank">1909332</a></p>
+</li>
+<li class="minor"><span class="title">Fix dropping files onto Book details causing an error if the confirmation dialog is disabled</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1909291" target="_blank">1909291</a></p>
+</li>
+</ul>
+<h3 class="category">New news sources</h3>
+<ul class="entries">
+<li>Mallorca Zeitung by VoHegg</li>
+<li>T-Online by VoHegg</li>
+<li>El Diario by Dirk Gómez</li>
+</ul>
+<h3 class="category">Improved news sources</h3>
+<ul class="entries">
+<li>General Knowledge Today</li>
+<li>El Pais</li>
+<li>USA Today</li>
+<li>WirtchaftsWoche Online</li>
+<li>The Guardian</li>
+<li>Arcamax</li>
+<li>Miami Herald</li>
+<li>The Seattle Times</li>
+</ul>
+        </div>
+        
+        <div class="release">
+            <h2 class="release-title">Release: 5.8.1 [24 Dec, 2020]</h2>
+<h3 class="category">New features</h3><ul class="entries">
+<li class="minor"><span class="title">Happy holidays to all calibre users!</span>
+</li>
+<li class="minor"><span class="title">E-book viewer: Add a mode to follow links with only the keyboard (triggered by Alt+F)</span>
+</li>
+<li class="minor"><span class="title">Edit book: A new option to show a configurable number lines above the current line when syncing the position of the preview panel to the current position in the code editor (under Preview settings in the Editor preferences).</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1908929" target="_blank">1908929</a></p>
+</li>
+<li class="minor"><span class="title">Windows: Automatically resolve shortcuts (.lnk files) when adding books to calibre.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1907410" target="_blank">1907410</a></p>
+</li>
+<li class="minor"><span class="title">Content server viewer: Don't enter full screen mode automatically when reading on desktop like devices (this can be controlled via a setting in the viewer preferences under Page layout)</span>
+</li>
+<li class="minor"><span class="title">E-book viewer tool bar: Add a select all action and a Read aloud action (can be added by right clicking the tool bar and configuring it)</span>
+</li>
+<li class="minor"><span class="title">Template/formatter enhancements: Add a 'for' statement and add the ability for a developer to pass extra information to a template.</span>
+</li>
+<li class="minor"><span class="title">Rules editors for icon/coloring rules: Add a button to duplicate rules and to convert a rule to advanced template mode</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1907919" target="_blank">1907919</a>, <a href="https://bugs.launchpad.net/calibre/+bug/1907918" target="_blank">1907918</a></p>
+</li>
+</ul>
+<h3 class="category">Bug fixes</h3><ul class="entries">
+<li class="minor"><span class="title">Content server viewer: Fix regression in 5.0 that broke scrolling on iOS</span>
+</li>
+<li class="minor"><span class="title">E-book viewer: Fix error when scrolling to some search results in flow mode</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1908000" target="_blank">1908000</a></p>
+</li>
+<li class="minor"><span class="title">AZW3 Input: Fix rare AID based links not working.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1898394" target="_blank">1898394</a></p>
+</li>
+<li class="minor"><span class="title">E-book viewer: Fix clock in header/footer not using system time format</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1907907" target="_blank">1907907</a></p>
+</li>
+<li class="minor"><span class="title">Windows: Fix Read aloud not working with books that have a single large internal text file, such as MOBI or DOCX books</span>
+</li>
+<li class="minor"><span class="title">PDF Output: Fix a regression causing conversion to fail when typesetting Chinese text</span>
+</li>
+<li class="minor"><span class="title">Amazon metadata download: Fix no results being found when using the automatic or Google servers because of a change in the markup of the Google search results page.</span>
+</li>
+<li class="minor"><span class="title">Version 5.8.1 fixes a couple of regressions that broke the Save to disk function and changing Page layout settings in the viewer.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1909217" target="_blank">1909217</a>, <a href="https://bugs.launchpad.net/calibre/+bug/1909197" target="_blank">1909197</a></p>
+</li>
+</ul>
+<h3 class="category">New news sources</h3>
+<ul class="entries">
+<li>SchwarzerPfeil by tastytea</li>
+<li>Substack by topynate</li>
+</ul>
+<h3 class="category">Improved news sources</h3>
+<ul class="entries">
+<li>The Australian</li>
+<li>The Atlantic</li>
+<li>Zerohedge</li>
+<li>New York Times Book Review</li>
+</ul>
+        </div>
+        
+        <div class="release">
+            <h2 class="release-title">Release: 5.7.2 [12 Dec, 2020]</h2>
+<h3 class="category">New features</h3><ul class="entries">
+<li class="major"><span class="title">E-book viewer: Add a "Read aloud" function that works via the operating system's Text-to-speech engine.</span>
+<p class="description">Click the "Read aloud" button in the viewer controls to start reading the book text aloud from the current page.</p>
+</li>
+<li class="minor"><span class="title">A new busy spinner for waiting animations</span>
+</li>
+<li class="minor"><span class="title">Edit metadata: Add buttons to easily set yes/no fields also shortcut to clear the field.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1907140" target="_blank">1907140</a></p>
+</li>
+</ul>
+<h3 class="category">Bug fixes</h3><ul class="entries">
+<li class="minor"><span class="title">PDF Output: Fix a regression in the previous release that broke text rendering for some fonts due to a bug in Qt WebEngine (full fix is in 5.7.2).</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1905967" target="_blank">1905967</a></p>
+</li>
+<li class="minor"><span class="title">PDF Output: Fix conversion failing when adding header/footer and the input document defines margins/padding on the &lt;html&gt; tag.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1905736" target="_blank">1905736</a></p>
+</li>
+<li class="minor"><span class="title">Windows: Fix the case of library names in copied calibre:// links sometimes incorrect.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1907159" target="_blank">1907159</a></p>
+</li>
+<li class="minor"><span class="title">AZW3 Input: Fix a regression in calibre 5 that broke processing of files with inline flow replacements.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1906459" target="_blank">1906459</a></p>
+</li>
+<li class="minor"><span class="title">Fix hiding and showing Book details panel changes its size by a pixel or two.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1906149" target="_blank">1906149</a></p>
+</li>
+<li class="minor"><span class="title">Get books: Fix amazon.fr not working because of website changes.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1907067" target="_blank">1907067</a></p>
+</li>
+<li class="minor"><span class="title">Bulk metadata search/replace: Fix text transform function not being applied to the test result in character mode</span>
+</li>
+<li class="minor"><span class="title">Book list: Improve rendering of column headers when they dont fit, by eliding them instead of just cutting off rendering.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1906464" target="_blank">1906464</a></p>
+</li>
+<li class="minor"><span class="title">Fix template function "first_non_empty" fails if no argument evaluates non-empty</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1906063" target="_blank">1906063</a></p>
+</li>
+<li class="minor"><span class="title">Fix regression in 5.7.0 causing failure to start if one of the previously used libraries had a stored path ending in a slash.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1907773" target="_blank">1907773</a></p>
+</li>
+</ul>
+<h3 class="category">Improved news sources</h3>
+<ul class="entries">
+<li>The Guardian</li>
+<li>The Atlantic</li>
+</ul>
+        </div>
+        
+        <div class="release">
+            <h2 class="release-title">Release: 5.6 [27 Nov, 2020]</h2>
+<h3 class="category">New features</h3><ul class="entries">
+<li class="minor"><span class="title">Edit book: Show a non-modal popup for a few seconds to allow undoing file delete operations</span>
+</li>
+<li class="minor"><span class="title">Device books view: Add an action to the context menu to easily jump to the matching book in the calibre library view</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1903418" target="_blank">1903418</a></p>
+</li>
+<li class="minor"><span class="title">Add ability to undo Generate cover in the Edit metadata screen, by long clicking the Generate cover button</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1903270" target="_blank">1903270</a></p>
+</li>
+<li class="minor"><span class="title">Edit book: Allow adding tags to the list of tags for the insert tag button</span>
+</li>
+<li class="minor"><span class="title">calibredb add: New option --automerge to automatically merge duplicates</span>
+</li>
+<li class="minor"><span class="title">Add an edit notes action to the context menu in the viewer highlights panel</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1905646" target="_blank">1905646</a></p>
+</li>
+<li class="minor"><span class="title">Content server viewer: Allow viewing images in a new window by right clicking them, matches the calibre builtin viewer behavior</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1903333" target="_blank">1903333</a></p>
+</li>
+<li class="minor"><span class="title">Book details window: Allow opening the edit metadata window using either the keyboard shortcut or the context menu</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1903403" target="_blank">1903403</a></p>
+</li>
+<li class="minor"><span class="title">Allow copying the current search as a calibre:// URL by right clicking the search box</span>
+</li>
+<li class="minor"><span class="title">Book details panel: Add entries to copy calibre:// links for the current book to the context menu</span>
+</li>
+<li class="minor"><span class="title">Edit book: Upgrade book: Ask whether to keep the NCX based Table of Contents</span>
+</li>
+</ul>
+<h3 class="category">Bug fixes</h3><ul class="entries">
+<li class="minor"><span class="title">Windows: Fix calibre portable launcher not working correctly from root folder in calibre 5.5</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1904310" target="_blank">1904310</a></p>
+</li>
+<li class="minor"><span class="title">macOS: Fix rendering of space after punctuation incorrect in Big Sur</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1904505" target="_blank">1904505</a></p>
+</li>
+<li class="minor"><span class="title">DOCX Input: When converting images placed using the obsolete VML markup default them to being inline rather than block images</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1905319" target="_blank">1905319</a></p>
+</li>
+<li class="minor"><span class="title">Metadata edit dialog: Fix keyboard shortcuts for bold/italic/underline not working when more than one comments editor widget is present on a single tab</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1905479" target="_blank">1905479</a></p>
+</li>
+<li class="minor"><span class="title">When using calibre://show-book URLs and the book is not found, clear any Virtual library or search restriction and then show the book</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1905113" target="_blank">1905113</a></p>
+</li>
+<li class="minor"><span class="title">macOS: Fix calibre:// URLs not working from other documents</span>
+</li>
+<li class="minor"><span class="title">Fix calibre:// URL search action not changing library if needed</span>
+</li>
+<li class="minor"><span class="title">annotation_count() template function displaying value for deleted annotations</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1904305" target="_blank">1904305</a></p>
+</li>
+<li class="minor"><span class="title">Edit book: Fix syntax highlighting not recognizing ends-with selector</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1905806" target="_blank">1905806</a></p>
+</li>
+</ul>
+<h3 class="category">Improved news sources</h3>
+<ul class="entries">
+<li>The BBC</li>
+<li>Folha de Sao Paolo</li>
+<li>Netzpolitik</li>
+</ul>
+        </div>
+        
+        <div class="release">
+            <h2 class="release-title">Release: 5.5 [13 Nov, 2020]</h2>
+<h3 class="category">New features</h3><ul class="entries">
+<li class="major"><span class="title">Support the calibre:// URL scheme</span>
+<p class="description">Clicking on calibre:// URLs can be used to have calibre perform various actions. For details, see: <a href="https://manual.calibre-ebook.com/url_scheme.html">https://manual.calibre-ebook.com/url_scheme.html</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Show calibre:// URL for current book in the Goto-&gt;Location panel</span>
+</li>
+<li class="minor"><span class="title">Edit book: Add an action to the right click menu for tabs to close tabs to the right of the current tab.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1902518" target="_blank">1902518</a></p>
+</li>
+<li class="minor"><span class="title">Add ability to copy tag, publisher and author in Book details panel by right-clicking</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1902413" target="_blank">1902413</a></p>
+</li>
+<li class="minor"><span class="title">Annotations browser: Add a context menu for common actions.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1902326" target="_blank">1902326</a></p>
+</li>
+<li class="minor"><span class="title">Annotations browser: Show a dot for highlights with notes.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1899839" target="_blank">1899839</a></p>
+</li>
+<li class="minor"><span class="title">Edit book: Saved searches panel: Allow copying the current saved search to the regular search panel by clicking the Export button.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1902227" target="_blank">1902227</a></p>
+</li>
+<li class="minor"><span class="title">Windows: Fix command line arguments not working for the portable.exe launchers</span>
+</li>
+<li class="minor"><span class="title">Viewer: back and forward buttons on the mouse now trigger the back and forward actions</span>
+</li>
+<li class="minor"><span class="title">Option to mark all books with annotations/bookmarks</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1902313" target="_blank">1902313</a></p>
+</li>
+<li class="minor"><span class="title">Various minor improvements to how keyboard focus is handled in the Tag browser</span>
+</li>
+</ul>
+<h3 class="category">Bug fixes</h3><ul class="entries">
+<li class="minor"><span class="title">Edit book: Fix regression in calibre 5 that caused an error when managing user dictionaries.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1903294" target="_blank">1903294</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix previous/next buttons iterating over removed bookmarks</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1903831" target="_blank">1903831</a></p>
+</li>
+<li class="minor"><span class="title">Welcome wizard: Fix changing the language causing a empty folder to be created.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1903825" target="_blank">1903825</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix regression causing custom shortcuts with Shift key pressed not working</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1903699" target="_blank">1903699</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: In dark mode when showing images with transparency in the popup use a light background color as most images are designed with a light background color in mind.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1903423" target="_blank">1903423</a></p>
+</li>
+<li class="minor"><span class="title">Fix a regression in the previous release that broke conversion of DJVU files</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1903428" target="_blank">1903428</a></p>
+</li>
+<li class="minor"><span class="title">Metadata edit: "Set to Undefined" button missing on integer columns.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1903363" target="_blank">1903363</a></p>
+</li>
+<li class="minor"><span class="title">Entry remains underlined in Tag Browser after clearing filter</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1903086" target="_blank">1903086</a></p>
+</li>
+<li class="minor"><span class="title">XML Catalogs: Fix languages field missing</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1902126" target="_blank">1902126</a></p>
+</li>
+<li class="minor"><span class="title">Fix a regression that broke loading of third party plugins that are encoded in an encoding other than UTF-8</span>
+</li>
+<li class="minor"><span class="title">macOS: Fix viewer not responding to cmd+c to copy text by default</span>
+</li>
+<li class="minor"><span class="title">Windows: Fix sending email on computers with non-ASCII computer names</span>
+</li>
+</ul>
+<h3 class="category">Improved news sources</h3>
+<ul class="entries">
+<li>Spectator Magazine</li>
+</ul>
+        </div>
+        
+        <div class="release">
+            <h2 class="release-title">Release: 5.4.2 [30 Oct, 2020]</h2>
+<h3 class="category">New features</h3><ul class="entries">
+<li class="minor"><span class="title">Windows: Allow adding of books to calibre from folders whose path length is larger than 260 characters</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1900761" target="_blank">1900761</a></p>
+</li>
+<li class="minor"><span class="title">Tag browser: Add an option in Preferences-&gt;Look &amp; feel-&gt;Tag browser to allow the tag browser to get keyboard focus</span>
+</li>
+<li class="minor"><span class="title">Tag browser: Allow editing the set of permissible values and colors for a custom column with fixed values, by right clicking on it.</span>
+</li>
+<li class="minor"><span class="title">Edit metadata dialog: Make most custom metadata controls use only a single line.</span>
+<p class="description">Elide the names of custom columns that are longer than a fixed width, instead of using multiple lines. Configurable via Preferences-&gt;Tweaks-&gt;Edit metadata custom column label length</p>
+</li>
+<li class="minor"><span class="title">Edit book: Remove unused CSS: Add an option to merge CSS rules that have identical properties</span>
+</li>
+<li class="minor"><span class="title">Book details window: Double clicking on the cover now shows it in the default system image viewer.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1901379" target="_blank">1901379</a></p>
+</li>
+<li class="minor"><span class="title">News download: Allow passing username/password in feed URLs.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1900874" target="_blank">1900874</a></p>
+</li>
+<li class="minor"><span class="title">Open with: Allow renaming Open with applications.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1900890" target="_blank">1900890</a></p>
+</li>
+</ul>
+<h3 class="category">Bug fixes</h3><ul class="entries">
+<li class="minor"><span class="title">Viewer: Fix jumping to search result not always working in flow mode.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1900868" target="_blank">1900868</a></p>
+</li>
+<li class="minor"><span class="title">Get Books: Update Google and Gutenberg plugins for website changes</span>
+</li>
+<li class="minor"><span class="title">Viewer: Fix keyboard shortcuts using Ctrl+Alt+letter key not working on Windows.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1900946" target="_blank">1900946</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix keyboard shortcuts to shrink/grow selection not working.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1900942" target="_blank">1900942</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix keyboard shortcut to toggle highlights panel not working when the highlights panel is itself focused.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1900938" target="_blank">1900938</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: handle editing of missing highlights more gracefully</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1900358" target="_blank">1900358</a></p>
+</li>
+<li class="minor"><span class="title">Drivers: Fix regression in calibre 5 that broke connecting to SONY devices</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1901289" target="_blank">1901289</a></p>
+</li>
+<li class="minor"><span class="title">Open with: On Linux when reading names from .desktop files, use the first matching language</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1901276" target="_blank">1901276</a></p>
+</li>
+<li class="minor"><span class="title">Conversion: Fix a regression in calibre 5 that broke conversion of some malformed CSS stylesheets.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1901593" target="_blank">1901593</a></p>
+</li>
+<li class="minor"><span class="title">Conversion: Fix a regression in calibre 5 that broke processing of some PDB files with images.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1901957" target="_blank">1901957</a></p>
+</li>
+<li class="minor"><span class="title">Conversion: Fix regression in calibre 5 in the handling of @import() rules in stylesheets that import from folders above themselves.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1901278" target="_blank">1901278</a></p>
+</li>
+<li class="minor"><span class="title">Content server: Fix various controls on the book details page not working when viewing a random book.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1901232" target="_blank">1901232</a>, <a href="https://bugs.launchpad.net/calibre/+bug/1901230" target="_blank">1901230</a></p>
+</li>
+<li class="minor"><span class="title">Tag browser: Fix a crash when renaming a saved search to a value that already exists.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1901273" target="_blank">1901273</a></p>
+</li>
+<li class="minor"><span class="title">Tag browser: Fix renaming of custom column with fixed set of values not working.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1900921" target="_blank">1900921</a></p>
+</li>
+<li class="minor"><span class="title">Fix a regression in calibre 5 that broke auto-sync of generated catalogs to devices.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1901630" target="_blank">1901630</a></p>
+</li>
+<li class="minor"><span class="title">Fix setting rating via ebook-meta command line tool broken in calibre 5.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1901113" target="_blank">1901113</a></p>
+</li>
+<li class="minor"><span class="title">When boolean columns are set to bistate, checking "show checkmarks" results in all non-boolean values being shown as false</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1900099" target="_blank">1900099</a></p>
+</li>
+<li class="minor"><span class="title">Spell check: Fix using non UTF-8 dictionaries broken in calibre 5</span>
+</li>
+<li class="minor"><span class="title">Fix a rare issue where restarting calibre from within the program would fail.</span>
+</li>
+<li class="minor"><span class="title">Version 5.4.2 fixes bugs in 5.4.0 that prevented calibre from starting on macOS and from choosing save file names on Windows.</span>
+</li>
+</ul>
+<h3 class="category">Improved news sources</h3>
+<ul class="entries">
+<li>Psychology Today</li>
+<li>Washington Post</li>
+<li>LifeHacker</li>
+<li>The Atlantic</li>
+<li>New York Review of Books</li>
+</ul>
+        </div>
+        
+        <div class="release">
+            <h2 class="release-title">Release: 5.3 [16 Oct, 2020]</h2>
+<h3 class="category">New features</h3><ul class="entries">
+<li class="minor"><span class="title">Tag browser: When grouping items by first letter if adjacent letters have few entries combine them into a single group.</span>
+<p class="description">Can be controlled via an option in Preferences-&gt;Look &amp; feel-&gt;Tag browser to combine 'first letters' together if there are a small number of items under adjacent letters</p>
+</li>
+<li class="minor"><span class="title">Viewer: Allow displaying the current page / total pages in the header/footer. Useful in paged mode to see exactly how many pages are left.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1899163" target="_blank">1899163</a></p>
+</li>
+<li class="minor"><span class="title">Viewer search panel: Show more result context in a tooltip when hovering over a search result.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1899834" target="_blank">1899834</a></p>
+</li>
+<li class="minor"><span class="title">DOCX Input: Add support for Word controls used to rotate or flip images</span>
+<p class="description">Only works with output formats such as EPUB that support CSS transforms</p>
+</li>
+<li class="minor"><span class="title">Viewer image pop-up: Allow maximizing/minimizing the window.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1899762" target="_blank">1899762</a></p>
+</li>
+<li class="minor"><span class="title">Edit metadata dialog: Use only a single line for custom column date fields</span>
+</li>
+<li class="minor"><span class="title">Add an item to search for categories to the category editor context menu.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1899341" target="_blank">1899341</a></p>
+</li>
+<li class="minor"><span class="title">Category editor: Add a right click menu to change case of the selected entries.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1899316" target="_blank">1899316</a></p>
+</li>
+</ul>
+<h3 class="category">Bug fixes</h3><ul class="entries">
+<li class="minor"><span class="title">Fix a regression in 5.0 that caused performance of dialogs that contain title/series/tags edit fields to be very poor with large libraries.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1898221" target="_blank">1898221</a></p>
+</li>
+<li class="minor"><span class="title">Fix a regression in 5.0 that caused some pop-up menus to appear on the wrong monitor in multi-monitor setups</span>
+</li>
+<li class="minor"><span class="title">macOS: Fix a long standing bug that prevented drag and drop of multiple items</span>
+</li>
+<li class="minor"><span class="title">Windows: Fix a regression that broke scanning for default programs for the Open with action</span>
+</li>
+<li class="minor"><span class="title">Windows: Fix a regression in 5.0 causing some MOBI files with non-BMP characters not being processed correctly.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1898894" target="_blank">1898894</a></p>
+</li>
+<li class="minor"><span class="title">E-book viewer: Fix scrolling past the end of chapter boundaries not working in books that have negative margins</span>
+</li>
+<li class="minor"><span class="title">Edit metadata dialog: fix incorrect rendering of custom column names that start with emoji.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1899466" target="_blank">1899466</a></p>
+</li>
+<li class="minor"><span class="title">Quickview: Fix nothing shown after clearing the search.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1899318" target="_blank">1899318</a></p>
+</li>
+<li class="minor"><span class="title">Dark mode: Fix radio buttons having no outline.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1900022" target="_blank">1900022</a></p>
+</li>
+<li class="minor"><span class="title">Annotations browser: When showing a book in the calibre library that is not currently visible, display an error.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1900066" target="_blank">1900066</a></p>
+</li>
+</ul>
+<h3 class="category">New news sources</h3>
+<ul class="entries">
+<li>Deutsche Welle by VoHe</li>
+</ul>
+<h3 class="category">Improved news sources</h3>
+<ul class="entries">
+<li>Reuters</li>
+</ul>
+        </div>
+        
+        <div class="release">
+            <h2 class="release-title">Release: 5.2 [07 Oct, 2020]</h2>
+<h3 class="category">New features</h3><ul class="entries">
+<li class="minor"><span class="title">Browse annotations: Add a check box to restrict the displayed annotations to only the books currently selected in the calibre library.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1897354" target="_blank">1897354</a></p>
+</li>
+<li class="minor"><span class="title">Allow storing and calling functions in the calibre template language (Preferences-&gt;Template functions)</span>
+</li>
+<li class="minor"><span class="title">Add a shortcut (Shift+V) to open the last read book.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1897336" target="_blank">1897336</a></p>
+</li>
+</ul>
+<h3 class="category">Bug fixes</h3><ul class="entries">
+<li class="minor"><span class="title">Fix import errors with some third party plugin on Windows</span>
+</li>
+<li class="minor"><span class="title">Viewer: Fix toolbar show controls button not working when no book is open.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1898598" target="_blank">1898598</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix incorrect positioning of context menu for viewer toolbar.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1898577" target="_blank">1898577</a></p>
+</li>
+<li class="minor"><span class="title">MOBI Input: Fix regression that broke reading of some documents</span>
+</li>
+<li class="minor"><span class="title">Bulk metadata search and replace: Fix some regular expression causing errors with the new regex engine</span>
+</li>
+<li class="minor"><span class="title">Fix a regression that broke application of plugboards when sending by e-mail</span>
+</li>
+<li class="minor"><span class="title">ODT Input: Fix a regression that broke conversion of ODT files with footnotes.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1898441" target="_blank">1898441</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix mouse wheel not working while selection bar is visible</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1898413" target="_blank">1898413</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix selection popup bar not always close to mouse when ending select-to-drag</span>
+</li>
+<li class="minor"><span class="title">Fix calibre-server not exiting on Ctrl+C on Windows</span>
+</li>
+<li class="minor"><span class="title">Content server OPDS feeds: Fix error if the metadata for a book contains particular Unicode characters.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1897410" target="_blank">1897410</a></p>
+</li>
+<li class="minor"><span class="title">Edit book: Reports tool: Fix a regression that broke sorting.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1898167" target="_blank">1898167</a></p>
+</li>
+<li class="minor"><span class="title">HTMLZ Output: Fix an error when converting a document that has SVG images</span>
+</li>
+</ul>
+        </div>
+        
+        <div class="release">
+            <h2 class="release-title">Release: 5.1 [02 Oct, 2020]</h2>
+<h3 class="category">New features</h3><ul class="entries">
+<li class="minor"><span class="title">Enhancement: allow using templates in search expressions</span>
+</li>
+<li class="minor"><span class="title">Viewer lookup panel: Add a checkbox to disable automatic update of lookup when the selected text changes.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1897435" target="_blank">1897435</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Allow skipping the confirmation when using the remove highlight button in the popup bar.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1897415" target="_blank">1897415</a></p>
+</li>
+</ul>
+<h3 class="category">Bug fixes</h3><ul class="entries">
+<li class="minor"><span class="title">ToC Editor: Fix bulk rename of entries not working</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1897618" target="_blank">1897618</a></p>
+</li>
+<li class="minor"><span class="title">Linux: Fix right clicking on system tray icon not working</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1897571" target="_blank">1897571</a></p>
+</li>
+<li class="minor"><span class="title">Fix User category based searches unreliable dues to caching issues</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1897356" target="_blank">1897356</a></p>
+</li>
+<li class="minor"><span class="title">PDF Output: Don't fail if the input document has an html file identified as the cover</span>
+</li>
+<li class="minor"><span class="title">Catalog generation: Fix a regression that broke generating catalogs if books with no comments are present.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1897467" target="_blank">1897467</a></p>
+</li>
+<li class="minor"><span class="title">Windows: Fix error on first run of calibre after install/upgrade</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1897314" target="_blank">1897314</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix copy to clipboard button in toolbar not working</span>
+</li>
+<li class="minor"><span class="title">Viewer: Fix copy to clipboard not copying text as HTML to clipboard in addition to plain text</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1897297" target="_blank">1897297</a></p>
+</li>
+<li class="minor"><span class="title">macOS: Fix some drop down menus such as in the ToC editor and cover generation in the Edit metadata dialog not working</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1897409" target="_blank">1897409</a></p>
+</li>
+</ul>
+        </div>
+        
+        <div class="release">
+            <h2 class="release-title">Release: 5.0.1 [25 Sep, 2020]</h2>
+<h3 class="category">New features</h3><ul class="entries">
+<li class="major"><span class="title">For details on the major changes in calibre between 4.0 and 5.0, see <a href="https://calibre-ebook.com/new-in/fourteen">https://calibre-ebook.com/new-in/fourteen</a></span>
+</li>
+<li class="major"><span class="title">E-book viewer: Add support for highlighting</span>
+<p class="description"><a href="https://manual.calibre-ebook.com/viewer.html#highlighting-text">https://manual.calibre-ebook.com/viewer.html#highlighting-text</a></p>
+</li>
+<li class="major"><span class="title">E-book viewer: Add support for right-to-left and vertical text</span>
+</li>
+<li class="major"><span class="title">Switch calibre to Python 3. This means that some no longer maintained third party plugins will not work. See <a href="https://www.mobileread.com/forums/showthread.php?t=326405">https://www.mobileread.com/forums/showthread.php?t=326405</a></span>
+</li>
+<li class="minor"><span class="title">Dark mode support for the Content server and E-book viewer user interfaces</span>
+</li>
+<li class="minor"><span class="title">Content server's in-browser viewer now supports bookmarking. Bookmarks and highlights are auto-synced across devices.</span>
+</li>
+<li class="minor"><span class="title">Regular expression engine used for searching the book list and reading metadata from filenames has been made more powerful.</span>
+</li>
+</ul>
+<h3 class="category">Bug fixes</h3><ul class="entries">
+<li class="minor"><span class="title">Version 5.0.1 fixes a bug in 5.0.0 that broke connecting to devices on macOS</span>
+</li>
+</ul>
+        </div>
+        
+        <div class="release">
+            <h2 class="release-title">Release: 4.23 [21 Aug, 2020]</h2>
+<h3 class="category">New features</h3><ul class="entries">
+<li class="minor"><span class="title">Kobo driver: Add support for new firmware. Also add recognition of 'Kobo Plus' subscription books</span>
+</li>
+<li class="minor"><span class="title">Edit book: Allow customizing the base background/foreground and link colors for the preview window.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1889925" target="_blank">1889925</a></p>
+</li>
+<li class="minor"><span class="title">Quickview panel: Add actions to the context menu to search for book in library, open in E-book viewer, etc.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1891765" target="_blank">1891765</a></p>
+</li>
+<li class="minor"><span class="title">Allow forcing calibre to remember the column width for the On device column by right clicking the header of the column</span>
+</li>
+<li class="minor"><span class="title">Template language: Add functions to perform math operations to convert fractional numbers to integers</span>
+</li>
+</ul>
+<h3 class="category">Bug fixes</h3><ul class="entries">
+<li class="minor"><span class="title">Content server: Fix Esc key not working in several views.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1849958" target="_blank">1849958</a></p>
+</li>
+<li class="minor"><span class="title">Fix unable to delete default value for custom columns of boolean type, once set</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1889973" target="_blank">1889973</a></p>
+</li>
+<li class="minor"><span class="title">EPUB Output: When splitting don't consider files with only a single character empty</span>
+</li>
+<li class="minor"><span class="title">Comments editor: Fix syntax coloring for HTML view in dark mode</span>
+</li>
+<li class="minor"><span class="title">Book list: When a series column is not wide enough, elide text in the middle so that the series number is visible</span>
+</li>
+</ul>
+<h3 class="category">New news sources</h3>
+<ul class="entries">
+<li>linuxnews.de and t3n.de by Volker Heggemann</li>
+</ul>
+<h3 class="category">Improved news sources</h3>
+<ul class="entries">
+<li>El Diplo</li>
+<li>calibre Blog</li>
+<li>ESPN</li>
+<li>LA Times</li>
+<li>Winnipeg Free Press</li>
+<li>Popular Science</li>
+<li>Science News Recent Issues</li>
+</ul>
+        </div>
+        
+        <div class="release">
+            <h2 class="release-title">Release: 4.22 [31 Jul, 2020]</h2>
+<h3 class="category">New features</h3><ul class="entries">
+<li class="minor"><span class="title">Edit book: In dark mode, make the preview panel also dark.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1888071" target="_blank">1888071</a></p>
+</li>
+<li class="minor"><span class="title">PDF Output: Headers/footers: Allow displaying the current page number and total number of pages in the top level section/chapter.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1889000" target="_blank">1889000</a></p>
+</li>
+<li class="minor"><span class="title">Edit book: Show EPUB version in window title</span>
+</li>
+<li class="minor"><span class="title">Allow testing if a number column is set or not set in coloring/icon/emblem rules.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1888456" target="_blank">1888456</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Add a setting to control how many pixels a scroll wheel should generate before triggering a page turn</span>
+</li>
+</ul>
+<h3 class="category">Bug fixes</h3><ul class="entries">
+<li class="minor"><span class="title">Edit book: Fix a regression in the previous release that caused poor performance when editing large files.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1889047" target="_blank">1889047</a></p>
+</li>
+<li class="minor"><span class="title">DOCX Input: Leave undefined text colors in the input document as undefined</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1888897" target="_blank">1888897</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix using a very small font step size not working.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1888609" target="_blank">1888609</a></p>
+</li>
+<li class="minor"><span class="title">Font scanner: Also scan the new win 10 local font paths</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1888798" target="_blank">1888798</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix typing values in font size adjust control not working</span>
+</li>
+</ul>
+<h3 class="category">Improved news sources</h3>
+<ul class="entries">
+<li>Respekt</li>
+<li>The Atlantic</li>
+</ul>
+        </div>
+        
+        <div class="release">
+            <h2 class="release-title">Release: 4.21 [16 Jul, 2020]</h2>
+<h3 class="category">New features</h3><ul class="entries">
+<li class="minor"><span class="title">Kobo driver: Add support for the new Kobo Nia</span>
+</li>
+<li class="minor"><span class="title">Cover grid: Vertically center covers that are smaller than the available space.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1886731" target="_blank">1886731</a></p>
+</li>
+<li class="minor"><span class="title">Quickview panel: Add a checkbox to easily toggle if Virtual libraries are respected.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1886347" target="_blank">1886347</a></p>
+</li>
+<li class="minor"><span class="title">When creating custom columns allow specifying a default value to be applied to new books for that column</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1886079" target="_blank">1886079</a></p>
+</li>
+</ul>
+<h3 class="category">Bug fixes</h3><ul class="entries">
+<li class="minor"><span class="title">Edit book: Fix initial sync of preview panel to cursor position sometimes not working when a new HTML file is opened for editing</span>
+</li>
+<li class="minor"><span class="title">Fix changed author sort name not being used when adding another book by the author to the library.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1886492" target="_blank">1886492</a></p>
+</li>
+<li class="minor"><span class="title">Cover browser: improve rendering of text with heavily hinted fonts.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1886239" target="_blank">1886239</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix CBC comic files not being viewed correctly. Note that you have to reload the book via the viewer controls to apply the fix.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1886307" target="_blank">1886307</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix Table of Contents not correct for comics.</span>
+</li>
+<li class="minor"><span class="title">Viewer: Ignore the zero width non-joiner character in searches</span>
+</li>
+<li class="minor"><span class="title">Viewer: Fix a regression in the previous release that broke reading of books with mathematics and also &lt;a&gt; tags without href attributes.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1886192" target="_blank">1886192</a></p>
+</li>
+<li class="minor"><span class="title">Cover grid: When using a background image do not scroll it with the covers.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1886139" target="_blank">1886139</a></p>
+</li>
+</ul>
+<h3 class="category">Improved news sources</h3>
+<ul class="entries">
+<li>1843 magazine</li>
+<li>Caravan Magazine</li>
+</ul>
+        </div>
+        
+        <div class="release">
+            <h2 class="release-title">Release: 4.20 [03 Jul, 2020]</h2>
+<h3 class="category">New features</h3><ul class="entries">
+<li class="minor"><span class="title">Edit book: Preview: Support displaying mathematics</span>
+</li>
+<li class="minor"><span class="title">Kobo driver: Add support for the latest firmware version</span>
+</li>
+<li class="minor"><span class="title">Allow copy/pasting dates from columns having different date display formats.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1885004" target="_blank">1885004</a></p>
+</li>
+<li class="minor"><span class="title">Book details panel: When right clicking on tags/authors/etc. allow finding them in the Tag browser easily.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1884343" target="_blank">1884343</a></p>
+</li>
+<li class="minor"><span class="title">Allow selecting individual items to delete in the Check library dialog.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1884402" target="_blank">1884402</a></p>
+</li>
+<li class="minor"><span class="title">Add an option to the wireless device driver to ignore device free space when sending books.</span>
+</li>
+</ul>
+<h3 class="category">Bug fixes</h3><ul class="entries">
+<li class="minor"><span class="title">Viewer: Fix turning pages in paged mode with a high precision touchpad to generate scroll events too fast</span>
+</li>
+<li class="minor"><span class="title">Edit book: Fix pasting files from another editor instance causing unsaved changes in open editors to be lost.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1885455" target="_blank">1885455</a></p>
+</li>
+<li class="minor"><span class="title">Tag browser: Do not show counts for searches as they are always zero</span>
+</li>
+<li class="minor"><span class="title">Check library: Do not abort if there are folders in the library that calibre does not have permission to access.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1884544" target="_blank">1884544</a></p>
+</li>
+<li class="minor"><span class="title">Amazon metadata download: Fix download of ratings not working from amazon.co.jp</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1884400" target="_blank">1884400</a></p>
+</li>
+</ul>
+<h3 class="category">New news sources</h3>
+<ul class="entries">
+<li>The Print by Kovid Goyal</li>
+</ul>
+<h3 class="category">Improved news sources</h3>
+<ul class="entries">
+<li>Popular Science</li>
+<li>Caravan Magazine</li>
+<li>Sports Illustrated</li>
+<li>Gazetta Prawna</li>
+</ul>
+        </div>
+        
+        <div class="release">
+            <h2 class="release-title">Release: 4.19 [19 Jun, 2020]</h2>
+<h3 class="category">New features</h3><ul class="entries">
+<li class="minor"><span class="title">Manage authors dialog: Improve performance in very large libraries</span>
+</li>
+</ul>
+<h3 class="category">Bug fixes</h3><ul class="entries">
+<li class="minor"><span class="title">Book details panel: Fix a regression that caused right clicking on an author name to manage it not opening with that name selected.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1883768" target="_blank">1883768</a></p>
+</li>
+<li class="minor"><span class="title">calibredb set_metadata: When converting a string into a date and time if the string is a full ISO 8601 date with timezone do not adjust the date to make it timezone neutral.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1883433" target="_blank">1883433</a></p>
+</li>
+<li class="minor"><span class="title">Edit book: Fix Check book spuriously reporting incorrect mime type warnings for fonts after upgrading a book from EPUB 2 to EPUB 3.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1882436" target="_blank">1882436</a></p>
+</li>
+<li class="minor"><span class="title">Book details panel: Don't show sizes less than 0.01MB as zero.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1882469" target="_blank">1882469</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix jump to previous section not working when viewer is on last section</span>
+</li>
+</ul>
+<h3 class="category">Improved news sources</h3>
+<ul class="entries">
+<li>Journal of Accountancy</li>
+<li>Bangkok Post</li>
+<li>20 minutes</li>
+</ul>
+        </div>
+        
+        <div class="release">
+            <h2 class="release-title">Release: 4.18 [05 Jun, 2020]</h2>
+<h3 class="category">New features</h3><ul class="entries">
+<li class="minor"><span class="title">Viewer: Search panel: Add a button to return to the position the book was at before doing a search.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1879889" target="_blank">1879889</a></p>
+</li>
+<li class="minor"><span class="title">Tag browser: Improve handling of hierarchical tags</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1880264" target="_blank">1880264</a></p>
+<p class="description">Renaming a tag now renames it and all its children. Drag and drop of hierarchical tags alters their hierarchy. Deleting a tag now deletes all its children.</p>
+</li>
+<li class="minor"><span class="title">Viewer: In flow mode, implement drag scrolling.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1880707" target="_blank">1880707</a></p>
+</li>
+<li class="minor"><span class="title">Tag browser: Allow Manage Tags to open to a selected letter when clicking on a letter.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1880175" target="_blank">1880175</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Show number of search results in title of search panel.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1881792" target="_blank">1881792</a></p>
+</li>
+<li class="minor"><span class="title">Content server: In the book list hovering over the library name now shows the total number of books in the library.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1881384" target="_blank">1881384</a></p>
+</li>
+</ul>
+<h3 class="category">Bug fixes</h3><ul class="entries">
+<li class="minor"><span class="title">Fix a regression in the previous release that broke the copy and recalculate author sort buttons.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1880395" target="_blank">1880395</a></p>
+</li>
+<li class="minor"><span class="title">Book details: Fix extra margin to the right of the metadata fields.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1881488" target="_blank">1881488</a></p>
+</li>
+<li class="minor"><span class="title">Cover grid: Show text under books that have no cover as well.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1880558" target="_blank">1880558</a></p>
+</li>
+<li class="minor"><span class="title">When merging metadata, if a custom column has type multiple in the new data and some other type in the old data, ignore the old data instead of failing</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1881796" target="_blank">1881796</a></p>
+</li>
+<li class="minor"><span class="title">macOS: When using the single instance option of the viewer, crashes should not require a restart of the computer to use the viewer again.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1881375" target="_blank">1881375</a></p>
+</li>
+<li class="minor"><span class="title">Windows: Fix an error when changing title/author for books in a library whose name contains characters not encodeable in the current code page</span>
+</li>
+<li class="minor"><span class="title">Windows: Fix amazon metadata download failing when accented characters in search query</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1880300" target="_blank">1880300</a></p>
+</li>
+<li class="minor"><span class="title">Comments editor: Fix shortcuts for bold/italic not working when toolbars are hidden</span>
+</li>
+</ul>
+<h3 class="category">Improved news sources</h3>
+<ul class="entries">
+<li>The Hindu</li>
+<li>Wired Daily Edition</li>
+<li>The Economist</li>
+</ul>
+        </div>
+        
+        <div class="release">
+            <h2 class="release-title">Release: 4.17 [23 May, 2020]</h2>
+<h3 class="category">New features</h3><ul class="entries">
+<li class="minor"><span class="title">Add a workaround for Amazon destroying cover thumbnails on e-ink Kindles.</span>
+<p class="description">For books sent with this release of calibre, reconnecting the Kindle to calibre after the cover has been destroyed will restore it automatically</p>
+</li>
+<li class="minor"><span class="title">Viewer: Group search results by section</span>
+</li>
+<li class="minor"><span class="title">Viewer: When the search results panel is expanded, show more context</span>
+</li>
+<li class="minor"><span class="title">Tag browser: Add options in Preferences-&gt;Look &amp; feel-&gt;Tag browser to hide empty categories and also to have the Find in the Tag browser show all matches instead of jumping from match to match.</span>
+</li>
+<li class="minor"><span class="title">Tag browser: The Find function for searching for items in the Tag browser can now do exact matching by using = as a prefix.</span>
+</li>
+<li class="minor"><span class="title">Manage tags/authors/etc dialogs: Allow searching and filtering the list of items.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1879134" target="_blank">1879134</a></p>
+</li>
+<li class="minor"><span class="title">Book details panel context menu: Add an action to open the Book details window.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1878768" target="_blank">1878768</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Add Next and Previous buttons in the bookmarks panel.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1878691" target="_blank">1878691</a></p>
+</li>
+<li class="minor"><span class="title">Conversion: Change the default white-space CSS for &lt;pre&gt; tags to pre-wrap as this suits ebooks better</span>
+</li>
+</ul>
+<h3 class="category">Bug fixes</h3><ul class="entries">
+<li class="minor"><span class="title">Edit Book: Fix default CSS template not quoting the charset, causing Check book to complain about the CSS.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1879618" target="_blank">1879618</a></p>
+</li>
+<li class="minor"><span class="title">Fix a regression in the previous release that broke the losslessly compress images tool when the image filenames had upper case characters on Windows.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1879313" target="_blank">1879313</a></p>
+</li>
+<li class="minor"><span class="title">Fix a regression that broke drag and drop of images from browsers to the book details panel on some platforms.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1879120" target="_blank">1879120</a></p>
+</li>
+<li class="minor"><span class="title">FB2 metadata: Fix setting dates before 1900 failing</span>
+</li>
+<li class="minor"><span class="title">Fix Bookeen Diva HD not being detected.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1877965" target="_blank">1877965</a></p>
+</li>
+</ul>
+<h3 class="category">New news sources</h3>
+<ul class="entries">
+<li>Independent Australia by Pat Stapelton</li>
+</ul>
+<h3 class="category">Improved news sources</h3>
+<ul class="entries">
+<li>How To Geek</li>
+<li>Tagespost by Pat Stapleton</li>
+<li>ABC News</li>
+</ul>
+        </div>
+        
+        <div class="release">
+            <h2 class="release-title">Release: 4.16 [15 May, 2020]</h2>
+<h3 class="category">New features</h3><ul class="entries">
+<li class="minor"><span class="title">Viewer/Edit book fuzzy search: Ignore soft hyphens and zero-width joiner characters when searching for text.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1878046" target="_blank">1878046</a></p>
+</li>
+<li class="minor"><span class="title">Tag browser: Allow adding/removing tags/authors/etc. to the currently selected book by right clicking on that tag and choosing "Apply to selected books".</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1878308" target="_blank">1878308</a></p>
+</li>
+<li class="minor"><span class="title">Kobo driver: Add support for updated firmware</span>
+</li>
+<li class="minor"><span class="title">Manage categories dialog: When editing a value with multiple values selected, change them all</span>
+</li>
+<li class="minor"><span class="title">Book list column header context menu: Add an entry to resize the column to fit its current contents.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1878450" target="_blank">1878450</a></p>
+</li>
+<li class="minor"><span class="title">Show completions when editing tags/authors/series etc in the Tag browser and Manage tags dialog.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1878302" target="_blank">1878302</a></p>
+</li>
+<li class="minor"><span class="title">Quickview: Double clicking an item now searches for it</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1878393" target="_blank">1878393</a></p>
+</li>
+<li class="minor"><span class="title">Comments editor: Add an action to the context menu to smarten punctuation.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1876381" target="_blank">1876381</a></p>
+</li>
+<li class="minor"><span class="title">FB2 metadata: Add support for setting publisher and publish year</span>
+</li>
+</ul>
+<h3 class="category">Bug fixes</h3><ul class="entries">
+<li class="minor"><span class="title">Edit book: Fix compress images losslessly failing for a few images on Windows when there are a lot of images in the book.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1877066" target="_blank">1877066</a></p>
+</li>
+<li class="minor"><span class="title">Fix a regression in 4.13 that broke the User category editor for all custom columns.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1877101" target="_blank">1877101</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix font size changes not applying to monospaced fonts.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1876580" target="_blank">1876580</a></p>
+</li>
+</ul>
+<h3 class="category">Improved news sources</h3>
+<ul class="entries">
+<li>Ars Technica</li>
+<li>Washington Post</li>
+</ul>
+        </div>
+        
+        <div class="release">
+            <h2 class="release-title">Release: 4.15 [02 May, 2020]</h2>
+<h3 class="category">New features</h3><ul class="entries">
+<li class="minor"><span class="title">Viewer: Improve the interface for changing font sizes</span>
+</li>
+<li class="minor"><span class="title">Viewer: Add a keyboard shortcut (Ctrl+Alt+B) for adding a bookmark</span>
+</li>
+</ul>
+<h3 class="category">Bug fixes</h3><ul class="entries">
+<li class="minor"><span class="title">Bulk metadata edit: Fix a regression causing scrollbars to not appear in Custom metadata tab.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1875090" target="_blank">1875090</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix a regression that broke searching in flow mode.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1874877" target="_blank">1874877</a></p>
+</li>
+<li class="minor"><span class="title">BibTeX Catalog: Don't output comment describing the catalog as Zotero fails to process it.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1876302" target="_blank">1876302</a></p>
+</li>
+<li class="minor"><span class="title">Linux: Fix uninstaller not working on Linux distros that have no python symlink.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1876164" target="_blank">1876164</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix zoom step size setting ignored.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1875840" target="_blank">1875840</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix text that has font sizes specified using keywords not being scaleable by the viewer's font size controls.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1875021" target="_blank">1875021</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix LRF files not opening</span>
+</li>
+<li class="minor"><span class="title">MOBI metadata: When reading author sort from MOBI files, construct the final value from all author fields</span>
+</li>
+<li class="minor"><span class="title">macOS: hide accelerator key underlines since they don't work anyway as Apple does not believe in them</span>
+</li>
+<li class="minor"><span class="title">macOS: Fix keyboard shortcuts for select all, copy and paste not working in file dialogs.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1874499" target="_blank">1874499</a></p>
+</li>
+</ul>
+<h3 class="category">Improved news sources</h3>
+<ul class="entries">
+<li>The Nation</li>
+<li>Animal Politico</li>
+</ul>
+        </div>
+        
+        <div class="release">
+            <h2 class="release-title">Release: 4.14 [23 Apr, 2020]</h2>
+<h3 class="category">New features</h3><ul class="entries">
+<li class="minor"><span class="title">Viewer: Add an option to have taps turn by screen fulls instead of pages, under Scrolling behavior</span>
+</li>
+<li class="minor"><span class="title">Viewer: Allow double clicking or long tapping on images to view then in a new window.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1872759" target="_blank">1872759</a></p>
+</li>
+<li class="minor"><span class="title">Edit Book: Add a new fuzzy search mode in which typographical quotes and various space types are matched by the plain equivalents</span>
+</li>
+<li class="minor"><span class="title">Content server: Add a new setting to allow un-authenticated users from specific IP addresses to make changes to the calibre library</span>
+</li>
+<li class="minor"><span class="title">Quick view: Double click in a column to show that column in the main book list</span>
+</li>
+</ul>
+<h3 class="category">Bug fixes</h3><ul class="entries">
+<li class="minor"><span class="title">Book details panel: Fix copy path to file not copying full path to file when right clicking on a format entry</span>
+</li>
+<li class="minor"><span class="title">Windows: Fix error when applying hyphenation in bulk with Polish books.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1873949" target="_blank">1873949</a></p>
+</li>
+<li class="minor"><span class="title">macOS: Fix selecting applications that use binary plist files such as Kindle.app with Open With not working.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1873972" target="_blank">1873972</a></p>
+</li>
+<li class="minor"><span class="title">DOCX Output: Fix images that use URL unsafe characters in their filenames being dropped during conversion.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1873571" target="_blank">1873571</a></p>
+</li>
+<li class="minor"><span class="title">DOCX Output: Fix internal links not working when converted files contain URL unsafe characters in their filenames</span>
+</li>
+<li class="minor"><span class="title">Viewer: Fix view image popup not remembering its geometry</span>
+</li>
+<li class="minor"><span class="title">Viewer: Allow leading and trailing whitespace in search expressions</span>
+</li>
+<li class="minor"><span class="title">HTMLZ Output: Fix SVG images that use xlink:href not working.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1869856" target="_blank">1869856</a></p>
+</li>
+<li class="minor"><span class="title">Windows: Fix drag and drop from SMB shares to the edit metadata dialog formats list not working.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1869471" target="_blank">1869471</a></p>
+</li>
+<li class="minor"><span class="title">Comments editor: Don't insert blank lines between list elements</span>
+</li>
+<li class="minor"><span class="title">Allow using Quick view from the Book grid view.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1869550" target="_blank">1869550</a></p>
+</li>
+<li class="minor"><span class="title">Fix tri-state booleans not working with color/icon rules and undefined values</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1873106" target="_blank">1873106</a></p>
+</li>
+</ul>
+<h3 class="category">New news sources</h3>
+<ul class="entries">
+<li>Heise ct and iX by Ralf Hein</li>
+<li>Saechsische Zeitung by by epubli</li>
+</ul>
+<h3 class="category">Improved news sources</h3>
+<ul class="entries">
+<li>London Review of Books</li>
+<li>Seattle Times</li>
+<li>MIT Technology Review</li>
+<li>Zeit Online</li>
+<li>Handelsblatt</li>
+<li>Spectator Magazine</li>
+<li>Spektrum der Wissenschaft</li>
+</ul>
+        </div>
+        
+        <div class="release">
+            <h2 class="release-title">Release: 4.13 [27 Mar, 2020]</h2>
+<h3 class="category">New features</h3><ul class="entries">
+<li class="minor"><span class="title">Edit book: When searching in normal mode, have spaces in the search expression match multiple spaces and line breaks in the text.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1868847" target="_blank">1868847</a></p>
+</li>
+<li class="minor"><span class="title">When running calibre-portable.exe popup a more useful error message if it is placed in a location with a too long path.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1866739" target="_blank">1866739</a></p>
+</li>
+<li class="minor"><span class="title">Edit book: Allow skipping confirmation dialog when marking non-first file as cover page</span>
+</li>
+<li class="minor"><span class="title">Add a shortcut [Ctrl+Alt+P] to switch to the previously opened library.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1866742" target="_blank">1866742</a></p>
+</li>
+</ul>
+<h3 class="category">Bug fixes</h3><ul class="entries">
+<li class="minor"><span class="title">Viewer: Fix searching in flow mode not scrolling to display the search results.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1866519" target="_blank">1866519</a></p>
+</li>
+<li class="minor"><span class="title">Viewer search: Fix jumping to next match sometimes selecting previous match if the searched for expression occurs with identical context in multiple places.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1868633" target="_blank">1868633</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Ensure there is no bleed between pages when using single page per screen</span>
+</li>
+<li class="minor"><span class="title">Fix Shift click not working reliably in the book list</span>
+</li>
+<li class="minor"><span class="title">Fix edit open with applications not working from files browser in editor</span>
+</li>
+<li class="minor"><span class="title">MOBI Input: Upshift non-animated GIF to PNG as it is a more widely supported format</span>
+</li>
+<li class="minor"><span class="title">MOBI Input: Don't auto-convert images in PNG/GIF formats to JPEG</span>
+</li>
+<li class="minor"><span class="title">MOBI Output: Improve conversion of PNG images with transparency to GIF</span>
+</li>
+<li class="minor"><span class="title">Check Book: Do not fail if non-UTF-8 stylesheets are present in the book.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1866701" target="_blank">1866701</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Maximum font size for margin text should be the body font size not hardcoded to 12px</span>
+</li>
+<li class="minor"><span class="title">PDF Output: Ignore glyph size mismatches when merging fonts for TTF.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1866364" target="_blank">1866364</a></p>
+</li>
+</ul>
+<h3 class="category">New news sources</h3>
+<ul class="entries">
+<li>Istorias and Sardinia Post by tzium</li>
+</ul>
+<h3 class="category">Improved news sources</h3>
+<ul class="entries">
+<li>Forbes</li>
+<li>LA Times</li>
+<li>Glasgow Herald</li>
+<li>Spectator Magazine</li>
+<li>Newsweek</li>
+</ul>
+        </div>
+        
+        <div class="release">
+            <h2 class="release-title">Release: 4.12 [06 Mar, 2020]</h2>
+<h3 class="category">New features</h3><ul class="entries">
+<li class="minor"><span class="title">Kobo driver: Add support for new firmware with the series list on the device</span>
+</li>
+<li class="minor"><span class="title">Automatically extract the source DOCX file from Kindle Create KPF files when adding them to calibre. If you prefer to preserve the KPF file you can disable the KPF Extract plugin in Preferences-&gt;Plugins</span>
+</li>
+<li class="minor"><span class="title">Content server: Add a button to delete all locally cached books.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1864305" target="_blank">1864305</a></p>
+</li>
+<li class="minor"><span class="title">Edit Book: Allow selecting the contents of a tag with Ctrl+Alt+T</span>
+</li>
+<li class="minor"><span class="title">Viewer: Save current position after 3 seconds of last position change. Useful if the viewer crashes on resume from sleep.</span>
+</li>
+<li class="minor"><span class="title">Viewer: Add a keyboard shortcut (Ctrl+W) to toggle the scrollbar.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1864356" target="_blank">1864356</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Keyboard shortcuts to change number of columns (Ctrl+[ and Ctrl+])</span>
+</li>
+</ul>
+<h3 class="category">Bug fixes</h3><ul class="entries">
+<li class="minor"><span class="title">Fix the Douban metadata download plugin</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1853091" target="_blank">1853091</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix searching in Regex and Whole words mode not working well.</span>
+</li>
+<li class="minor"><span class="title">Viewer: Fix searching for multiple words in fixed layout books not working.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1863464" target="_blank">1863464</a></p>
+</li>
+<li class="minor"><span class="title">RTF Input: Fix handling of RTF files with invalid encoded text.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1864719" target="_blank">1864719</a></p>
+</li>
+<li class="minor"><span class="title">PDF Output: Add a hangcheck for loading HTML if there is no progress for sixty seconds abort</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1865380" target="_blank">1865380</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: When starting without a book allowing quitting the viewer by clicking the Close button on the "Open book" page</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1864343" target="_blank">1864343</a></p>
+</li>
+</ul>
+<h3 class="category">New news sources</h3>
+<ul class="entries">
+<li>Spectator Australia by James Cridland</li>
+</ul>
+<h3 class="category">Improved news sources</h3>
+<ul class="entries">
+<li>Wired</li>
+<li>ABC News Australia</li>
+</ul>
+        </div>
+        
+        <div class="release">
+            <h2 class="release-title">Release: 4.11.2 [21 Feb, 2020]</h2>
+<h3 class="category">New features</h3><ul class="entries">
+<li class="minor"><span class="title">Viewer: Allow right clicking on the scrollbar to easily access commonly used scrolling shortcuts</span>
+</li>
+<li class="minor"><span class="title">Edit book: Preview panel: Allow right clicking on images to edit them</span>
+</li>
+<li class="minor"><span class="title">Add a new Quick select action to quickly select a Virtual library with a few keystrokes. Activated by Ctrl+T or the Virtual library menu</span>
+</li>
+<li class="minor"><span class="title">Viewer: Calculate default column widths based on current font size</span>
+</li>
+<li class="minor"><span class="title">Viewer: Add a control to quit the viewer useful on touchscreens.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1862441" target="_blank">1862441</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Add shortcut for showing metadata (Ctrl+N)</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1862432" target="_blank">1862432</a></p>
+</li>
+</ul>
+<h3 class="category">Bug fixes</h3><ul class="entries">
+<li class="minor"><span class="title">4.11.2 fixes a couple of regressions that broke the New bookmark button in the viewer and scrolling in the content server library view. Also fixes calculation of default column widths in viewer not changing when font size is changed.</span>
+</li>
+<li class="minor"><span class="title">Viewer: Fix a regression that broke detection of pop-up footnotes using EPUB 3 markup</span>
+</li>
+<li class="minor"><span class="title">Viewer: Fix current reading position not preserved when changing preferences and auto scroll is active.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1863438" target="_blank">1863438</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix stopping auto scroll at end of chapter not stopping next chapter jump.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1863487" target="_blank">1863487</a></p>
+</li>
+<li class="minor"><span class="title">Fix for viewer window going off screen even when not restoring window geometry</span>
+</li>
+<li class="minor"><span class="title">Edit book: Fix syntax highlighting for break-(before|after)</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1863020" target="_blank">1863020</a></p>
+</li>
+<li class="minor"><span class="title">Fix drag and drop of some image files onto edit metadata dialog not working</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1862440" target="_blank">1862440</a></p>
+</li>
+<li class="minor"><span class="title">Conversion pipeline: Fix styles applied via selectors to the &lt;html&gt; element being ignored</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1862401" target="_blank">1862401</a></p>
+</li>
+<li class="minor"><span class="title">Bulk metadata edit: Fix clear series not resetting series index</span>
+</li>
+<li class="minor"><span class="title">Fix clicking on author name in Book details panel to search in Goodreads not working if author has more than two parts in his name</span>
+</li>
+</ul>
+<h3 class="category">Improved news sources</h3>
+<ul class="entries">
+<li>New York Times</li>
+</ul>
+        </div>
+        
+        <div class="release">
+            <h2 class="release-title">Release: 4.10 [07 Feb, 2020]</h2>
+<h3 class="category">New features</h3><ul class="entries">
+<li class="minor"><span class="title">Viewer: When searching have single and double quotes match their curly variants as well.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1861715" target="_blank">1861715</a></p>
+</li>
+</ul>
+<h3 class="category">Bug fixes</h3><ul class="entries">
+<li class="minor"><span class="title">Fix a regression that caused the edit metadata individually and convert individually actions to use the bulk actions when multiple books are selected.</span>
+</li>
+<li class="minor"><span class="title">Linux: Fix a crash caused by broken/incompatible CUPS Qt system plugin.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1861741" target="_blank">1861741</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix Search shortcut button not focusing search input if the search panel is placed in a tab or a floating window</span>
+</li>
+<li class="minor"><span class="title">Update Google Images cover download plugin for website markup changes</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1862034" target="_blank">1862034</a></p>
+</li>
+<li class="minor"><span class="title">Catalog generation: Ignore invalid pubdates</span>
+</li>
+<li class="minor"><span class="title">Viewer: Stop auto scroll when changing page layout mode.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1861621" target="_blank">1861621</a></p>
+</li>
+<li class="minor"><span class="title">zipfile: Fix regression that broke handling of zipfiles with internal filenames not encoded in UTF-8.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1860889" target="_blank">1860889</a></p>
+</li>
+<li class="minor"><span class="title">Check Book: Turn off unique headings CSS warning</span>
+</li>
+<li class="minor"><span class="title">DOCX Output: When a list item contains a nested list but no text, it should be output as an empty list item.</span>
+</li>
+</ul>
+<h3 class="category">Improved news sources</h3>
+<ul class="entries">
+<li>The New Yorker</li>
+<li>Financiele Dagblad</li>
+</ul>
+        </div>
+        
+        <div class="release">
+            <h2 class="release-title">Release: 4.9.1 [23 Jan, 2020]</h2>
+<h3 class="category">New features</h3><ul class="entries">
+<li class="major"><span class="title">Viewer: Much improved search functionality</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1834247" target="_blank">1834247</a></p>
+<p class="description">Now all matches are displayed when searching in a side bar with a few words of context. Also supports searching using regular expressions.</p>
+</li>
+<li class="minor"><span class="title">Edit book: The Check book function has a new, improved CSS checker with support for CSS 3</span>
+</li>
+<li class="minor"><span class="title">Edit book: Add an "Open with" action to the context menu of the files browser to easily open files with external programs.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1860462" target="_blank">1860462</a></p>
+</li>
+<li class="minor"><span class="title">Viewer toolbar: Add button to easily change color schemes</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1859547" target="_blank">1859547</a></p>
+</li>
+</ul>
+<h3 class="category">Bug fixes</h3><ul class="entries">
+<li class="minor"><span class="title">version 4.9.1 fixes a couple of regressions in 4.9.0 with Check Book reporting false positives and an error when using the source editing view in the comments editor</span>
+</li>
+<li class="minor"><span class="title">Comments editor: Fix inserted blank paragraph being rendered as two lines.</span>
+</li>
+<li class="minor"><span class="title">PDF Output: Fix conversion of files containing &lt;canvas&gt; elements failing.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1859040" target="_blank">1859040</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix failure to open some books that contain unparseable URLs.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1858836" target="_blank">1858836</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix data displayed in side margins getting moved out of position when mouse hovers over side margin.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1858263" target="_blank">1858263</a></p>
+</li>
+<li class="minor"><span class="title">Book details panel: When right clicking to save the cover, replace invalid characters in the suggested filename</span>
+</li>
+<li class="minor"><span class="title">Fix harmless error popup when adding SSL key/certificate in server settings</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1858198" target="_blank">1858198</a></p>
+</li>
+<li class="minor"><span class="title">Dark mode: Fix colors in remove all formats except dialog</span>
+</li>
+</ul>
+<h3 class="category">Improved news sources</h3>
+<ul class="entries">
+<li>Liberty Times</li>
+</ul>
+        </div>
+        
+        <div class="release">
+            <h2 class="release-title">Release: 4.8 [03 Jan, 2020]</h2>
+<h3 class="category">New features</h3><ul class="entries">
+<li class="minor"><span class="title">Viewer in flow mode: Add auto-scrolling which can be triggered from the viewer controls and also make smooth scrolling by pressing down the arrow keys configurable</span>
+</li>
+<li class="minor"><span class="title">Viewer: Allow showing data in left and right margins in addition to headers/footers.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1855121" target="_blank">1855121</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Allow right clicking in the lookup panel to zoom in/out.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1857989" target="_blank">1857989</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Allow setting colors for the margins when creating new color schemes in Preferences-&gt;Colors</span>
+</li>
+<li class="minor"><span class="title">Viewer: Ctrl+, to show preferences</span>
+</li>
+</ul>
+<h3 class="category">Bug fixes</h3><ul class="entries">
+<li class="minor"><span class="title">PDF Output: Fix extracting text from generated PDFs not working if more than 100 characters per font are used in the text.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1857886" target="_blank">1857886</a></p>
+</li>
+<li class="minor"><span class="title">macOS: Fix viewer controls not using system UI font</span>
+</li>
+<li class="minor"><span class="title">Viewer: Fix images not being rendered at certain sizes when they are the only content on the page in paged mode with single page per screen.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1857803" target="_blank">1857803</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix svg links not working.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1857812" target="_blank">1857812</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix a bug that could allow maliciously crafted EPUB files to read data from files on the computer. Thanks to dozernz for discovering this attack vector.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1857800" target="_blank">1857800</a></p>
+</li>
+<li class="minor"><span class="title">macOS: Fix regression in previous release that caused link color to be light blue even when not using dark color themes</span>
+</li>
+<li class="minor"><span class="title">RTF Output: Fix a regression that slowed down conversion of images.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1857732" target="_blank">1857732</a></p>
+</li>
+<li class="minor"><span class="title">Server viewer: Make the Exit full screen action available in viewer controls.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1857677" target="_blank">1857677</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix error when trying to change more than a single keyboard shortcut at once</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1858117" target="_blank">1858117</a></p>
+</li>
+<li class="minor"><span class="title">Fix typo causing a harmless error message when downloading covers and only a single cover is found</span>
+</li>
+</ul>
+<h3 class="category">Improved news sources</h3>
+<ul class="entries">
+<li>London Review of Books</li>
+</ul>
+        </div>
+        
+        <div class="release">
+            <h2 class="release-title">Release: 4.7 [26 Dec, 2019]</h2>
+<h3 class="category">New features</h3><ul class="entries">
+<li class="minor"><span class="title">macOS: Use transient scrollbars unless they are disabled in system preferences</span>
+</li>
+<li class="minor"><span class="title">Viewer toolbar: Add actions for next and previous section. They are not added to the toolbar by default, customize it to add them.</span>
+</li>
+<li class="minor"><span class="title">Viewer: Add an option to keep the toolbar visible in full screen mode (Viewer Preferences-&gt;Miscellaneous)</span>
+</li>
+<li class="minor"><span class="title">Viewer: Allow modifying the current selection using Ctrl+Shift+Arrow.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1855942" target="_blank">1855942</a></p>
+</li>
+<li class="minor"><span class="title">Book details: Add an option in Preferences-&gt;Look &amp; feel-&gt;Book details to show a heading for the comments in the Book details panel</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1855942" target="_blank">1855942</a></p>
+</li>
+<li class="minor"><span class="title">Edit book: Spell check: Ignore soft hyphens in words</span>
+</li>
+<li class="minor"><span class="title">Viewer: In multiple pages per screen mode, When paging back to a chapter we have just paged forward from return to the exact position we left from in terms of number of blank trailing pages displayed.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1856472" target="_blank">1856472</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Add a setting under Preferences-&gt;Colors to control when the viewer will override all book colors or not.</span>
+</li>
+</ul>
+<h3 class="category">Bug fixes</h3><ul class="entries">
+<li class="minor"><span class="title">Viewer: Fix flick scrolling in flow mode jumping to next chapter.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1856398" target="_blank">1856398</a></p>
+</li>
+<li class="minor"><span class="title">Windows: Possible fix for some windows appearing off screen on multi-monitor setups</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1857651" target="_blank">1857651</a></p>
+</li>
+<li class="minor"><span class="title">macOS: Fix PDF Output not working when running ebook-convert via symlink on the command line.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1857377" target="_blank">1857377</a></p>
+</li>
+<li class="minor"><span class="title">PDF Output: Ignore upto 8 byte glyph data size mismatches when merging identical glyphs.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1857268" target="_blank">1857268</a></p>
+</li>
+<li class="minor"><span class="title">Edit Book: Spell Check: Fix words surrounded by narrow non-breaking spaces being incorrectly detected as mis-spelled</span>
+</li>
+<li class="minor"><span class="title">Get books: Update various Polish language stores</span>
+</li>
+<li class="minor"><span class="title">macOS: Fix drag and drop to re-arrange items in the viewer toolbar not working</span>
+</li>
+<li class="minor"><span class="title">PDF Output: When an inline image is placed alone inside a block tag, ensure that it is not split over two pages.</span>
+</li>
+<li class="minor"><span class="title">ToC editor: Fix generate from links not working correctly when links have no fragments.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1856395" target="_blank">1856395</a></p>
+</li>
+<li class="minor"><span class="title">PDF Output: Don't dedup images that cannot be uncompressed</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1856564" target="_blank">1856564</a></p>
+</li>
+<li class="minor"><span class="title">Advanced search dialog: Fix an error when closing dialog if on the second tab and no field is focused</span>
+</li>
+</ul>
+<h3 class="category">Improved news sources</h3>
+<ul class="entries">
+<li>Global Times</li>
+<li>London Review of Books</li>
+<li>The Telegraph (UK)</li>
+<li>The Economist</li>
+</ul>
+        </div>
+        
+        <div class="release">
+            <h2 class="release-title">Release: 4.6 [13 Dec, 2019]</h2>
+<h3 class="category">New features</h3><ul class="entries">
+<li class="major"><span class="title">Windows 10: Add support for dark mode.</span>
+<p class="description">If you turn on dark mode under the Windows Settings-&gt;Personalisation-&gt;Colors and restart calibre it will use dark colors. Can also be enabled by setting the CALIBRE_USE_DARK_PALETTE environment variable.</p>
+</li>
+<li class="minor"><span class="title">Polish books tool: Add a setting to add or remove soft hyphens from the book text</span>
+</li>
+<li class="minor"><span class="title">Viewer: Re-enable the old reference mode from calibre 3.x</span>
+</li>
+<li class="minor"><span class="title">Kobo driver: Support for new firmware</span>
+</li>
+</ul>
+<h3 class="category">Bug fixes</h3><ul class="entries">
+<li class="minor"><span class="title">PDF Output: Fix the option to break long words at the end of lines not working since calibre 4.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1854349" target="_blank">1854349</a></p>
+</li>
+<li class="minor"><span class="title">DOCX Input: Fix incorrect font sizes for footnote references in paragraphs that have text with multiple font sizes.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1855403" target="_blank">1855403</a></p>
+</li>
+<li class="minor"><span class="title">DOCX Input: Avoid nested &lt;sup&gt; tags for footnote references</span>
+</li>
+<li class="minor"><span class="title">Viewer: Fix max text width/height settings not being applied correctly on window resize.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1854211" target="_blank">1854211</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Auto-expand entries in the Table of Contents when viewing the corresponding location in the book.</span>
+</li>
+<li class="minor"><span class="title">Viewer: When creating a new bookmark, if there is selected text use it as the default bookmark title.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1854611" target="_blank">1854611</a></p>
+</li>
+</ul>
+        </div>
+        
+        <div class="release">
+            <h2 class="release-title">Release: 4.5 [29 Nov, 2019]</h2>
+<h3 class="category">New features</h3><ul class="entries">
+<li class="minor"><span class="title">Driver for the new PocketBook Inkpad X</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1854335" target="_blank">1854335</a></p>
+</li>
+<li class="minor"><span class="title">Driver for the new Bookeen Diva HD</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1854063" target="_blank">1854063</a></p>
+</li>
+<li class="minor"><span class="title">PDF Output: Add an option to shift text horizontally on odd/even pages.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1853155" target="_blank">1853155</a></p>
+</li>
+<li class="minor"><span class="title">Image viewing popup dialog: Add a checkbox to fit image to window.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1853671" target="_blank">1853671</a></p>
+</li>
+<li class="minor"><span class="title">Edit book: Create @font-face rules when importing multiple font files into book automatically, similar to how it is done when importing a single font file.</span>
+</li>
+</ul>
+<h3 class="category">Bug fixes</h3><ul class="entries">
+<li class="minor"><span class="title">PDF Output: Fix incorrect rendering if the input document has too many anchors.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1854345" target="_blank">1854345</a></p>
+</li>
+<li class="minor"><span class="title">Fix a regression that could cause window layout settings to sometimes not be saved during shutdown</span>
+</li>
+</ul>
+<h3 class="category">Improved news sources</h3>
+<ul class="entries">
+<li>L'express</li>
+<li>The Toronto Star</li>
+</ul>
+        </div>
+        
+        <div class="release">
+            <h2 class="release-title">Release: 4.4 [21 Nov, 2019]</h2>
+<h3 class="category">New features</h3><ul class="entries">
+<li class="minor"><span class="title">Viewer: Allow customizing what actions appear on the toolbar (Preferences-&gt;Miscellaneous-&gt;Customize toolbar).</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1852017" target="_blank">1852017</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: The --open-at command line argument now allows matching on ToC hrefs as well as titles</span>
+</li>
+<li class="minor"><span class="title">Book details window: Show path to book in cover tooltip.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1853184" target="_blank">1853184</a></p>
+</li>
+<li class="minor"><span class="title">Book details popup window: Add Open with actions to context menu when right clicking the cover image.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1852626" target="_blank">1852626</a></p>
+</li>
+<li class="minor"><span class="title">Edit book: Check book: Mark empty id attributes in the OPF as errors.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1852318" target="_blank">1852318</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Add a shortcut (Ctrl+F11) to toggle the toolbar</span>
+</li>
+<li class="minor"><span class="title">Bulk metadata download review dialog: When clicking cancel ask for confirmation if some books have already been reviewed</span>
+</li>
+</ul>
+<h3 class="category">Bug fixes</h3><ul class="entries">
+<li class="minor"><span class="title">PDF Output: Fix an error when using fonts with vertical metrics.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1852036" target="_blank">1852036</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix flickering when scrollbar is enabled and the header/footer is too wide for the screen.</span>
+</li>
+<li class="minor"><span class="title">PDF Output: Improve handling of images that do not fit on a page.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1852205" target="_blank">1852205</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: In paged mode break long text without spaces at arbitrary points instead of overflowing to the next page.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1852192" target="_blank">1852192</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix hang when using --open-at with single instance viewer and the specified location is already open.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1656573" target="_blank">1656573</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix opening .txt files in the standalone viewer leaving behind a temporary index.html file in the folder of the txt file.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1853232" target="_blank">1853232</a></p>
+</li>
+<li class="minor"><span class="title">Linux: Make some cache removal code robust against un-decodeable filenames in the cache folders</span>
+</li>
+<li class="minor"><span class="title">Viewer: Fix scrolling of panels in preferences causing artifacts.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1851933" target="_blank">1851933</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: improve appearance of controls on small screens.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1851921" target="_blank">1851921</a></p>
+</li>
+<li class="minor"><span class="title">Move Close button in viewer preferences to left to match the rest of the Content server UI.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1851937" target="_blank">1851937</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix restoring user stylesheet to default not being applied until a viewer restart</span>
+</li>
+<li class="minor"><span class="title">Viewer: Do not wait for loading of &lt;link&gt; tags that are not stylesheets.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1851814" target="_blank">1851814</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: When using the system color theme only override link colors in the book if the theme is dark.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1852990" target="_blank">1852990</a></p>
+</li>
+</ul>
+<h3 class="category">Improved news sources</h3>
+<ul class="entries">
+<li>The Atlantic</li>
+<li>LifeHacker</li>
+</ul>
+        </div>
+        
+        <div class="release">
+            <h2 class="release-title">Release: 4.3 [08 Nov, 2019]</h2>
+<h3 class="category">New features</h3><ul class="entries">
+<li class="minor"><span class="title">Viewer: Halve the time taken to prepare large EPUB files for first open</span>
+</li>
+<li class="minor"><span class="title">Viewer: Add an optional toolbar with common actions turn it on under Preferences-&gt;Miscellaneous</span>
+</li>
+<li class="minor"><span class="title">Viewer: Change the default color scheme to "System" which matches the colors used by the rest of calibre/the operating system. Also means the colors change automatically when the system color theme changes.</span>
+</li>
+<li class="minor"><span class="title">Viewer: Add a keyboard shortcut ; to go to a book location or position</span>
+</li>
+<li class="minor"><span class="title">Viewer: Add a control to easily reset the interface to defaults</span>
+</li>
+<li class="minor"><span class="title">Viewer: Allow also using --open-at with book positions</span>
+</li>
+<li class="minor"><span class="title">Viewer: Add command line option to force reloading of books</span>
+</li>
+</ul>
+<h3 class="category">Bug fixes</h3><ul class="entries">
+<li class="minor"><span class="title">Content server: Fix conversion of comics not working.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1847017" target="_blank">1847017</a></p>
+</li>
+<li class="minor"><span class="title">Book details: Allow right click to copy author links and identifiers</span>
+</li>
+<li class="minor"><span class="title">Book details: Fix removal of identifiers via right click not working</span>
+</li>
+<li class="minor"><span class="title">Book details: Fix clicking on tags etc not generating exact match searches</span>
+</li>
+<li class="minor"><span class="title">Viewer: When resizing and then resizing back to the old size ensure we return to the same page in paged mode.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1847507" target="_blank">1847507</a></p>
+</li>
+<li class="minor"><span class="title">Duplicates dialog: Sort sub-list of matching books already in calibre by author for easier inspection.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1851386" target="_blank">1851386</a></p>
+</li>
+<li class="minor"><span class="title">PDF Output: Fix links that go to destinations in the same file not working.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1849529" target="_blank">1849529</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix changes to keyboard shortcuts not being applied until viewer is restarted.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1851045" target="_blank">1851045</a></p>
+</li>
+<li class="minor"><span class="title">DOCX Input: Fix AlternateContent blocks rendering both choice and fallback sections.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1847365" target="_blank">1847365</a></p>
+</li>
+<li class="minor"><span class="title">macOS: Fix unable to re-arrange entries in the CSV catalog list.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1850918" target="_blank">1850918</a></p>
+</li>
+<li class="minor"><span class="title">Windows: fix UTF-16/truncated output when reporting unhandled exceptions</span>
+</li>
+<li class="minor"><span class="title">Viewer: Fix mouse wheel not working when mouse is over page margins.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1850845" target="_blank">1850845</a></p>
+</li>
+<li class="minor"><span class="title">Linux: Install bash completions as individual files for each calibre binary</span>
+</li>
+<li class="minor"><span class="title">Content server: Fix download button not working with non-ebook formats.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1850078" target="_blank">1850078</a></p>
+</li>
+<li class="minor"><span class="title">Fix a crash in popup completion lists if the mouse is over the list and list is scrolled with the keyboard</span>
+</li>
+<li class="minor"><span class="title">Viewer: Fix rare exception when navigating to a CFI.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1849775" target="_blank">1849775</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Ignore failures printing console message when the viewer is launched with broken stderr.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1849612" target="_blank">1849612</a></p>
+</li>
+<li class="minor"><span class="title">Amazon metadata: Fix failure to get published date from audible book pages.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1849400" target="_blank">1849400</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix shortcuts preferences not being translated</span>
+</li>
+<li class="minor"><span class="title">Tag browser: Fix incorrect text color when using dark theme for hovered item</span>
+</li>
+<li class="minor"><span class="title">Fix crash if canceling the icon theme download while covers are downloading</span>
+</li>
+<li class="minor"><span class="title">Viewer: Fix non-ASCII content in stylesheets not being interpreted correctly.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1848858" target="_blank">1848858</a></p>
+</li>
+<li class="minor"><span class="title">Viewer/Content server: Fix history for completion popups such as search bars not being stored correctly.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1847976" target="_blank">1847976</a></p>
+</li>
+<li class="minor"><span class="title">PDF Output: When a link with a fragment points to a non-existent anchor link to the top of the file instead of not linking at all</span>
+</li>
+<li class="minor"><span class="title">PDF Output: Fix standard SVG fullscreen image markup not working</span>
+</li>
+<li class="minor"><span class="title">PDF Output: Fix some books with full screen images failing to convert.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1848701" target="_blank">1848701</a></p>
+</li>
+</ul>
+<h3 class="category">Improved news sources</h3>
+<ul class="entries">
+<li>Clarin</li>
+<li>Various Polish news sources</li>
+</ul>
+        </div>
+        
+        <div class="release">
+            <h2 class="release-title">Release: 4.2 [18 Oct, 2019]</h2>
+<h3 class="category">New features</h3><ul class="entries">
+<li class="minor"><span class="title">macOS: Various improvements to dark mode support</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1847571" target="_blank">1847571</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Don't generate covers for books that don't have a cover. Note that because of this all previously opened books will again be prepared for first time reading.</span>
+</li>
+<li class="minor"><span class="title">Viewer: Restore print to PDF functionality</span>
+</li>
+<li class="minor"><span class="title">Viewer: Allow also jumping to book positions in Goto-&gt;Location</span>
+</li>
+<li class="minor"><span class="title">Content server: When adding books and a duplicate is suspected provide more information about what books match the duplicate</span>
+</li>
+<li class="minor"><span class="title">FB2 Output: Speed up conversion of images and handle external links</span>
+</li>
+<li class="minor"><span class="title">Viewer: If the book has no ToC try to generate one from headings, if any.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1847277" target="_blank">1847277</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Improve rendering of comics. No blank pages after large images or after every image in multi-page mode.</span>
+</li>
+<li class="minor"><span class="title">Viewer: Make it easier to use the bookmarks panel with only keyboard.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1847423" target="_blank">1847423</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Set the classes calibre-viewer-paginated and calibre-viewer-scrolling on the &lt;body&gt; tag in Paged and Flow modes. This allows the User styles to target these modes, if needed.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1847427" target="_blank">1847427</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Use the same loading spinner as is used by the rest of calibre</span>
+</li>
+</ul>
+<h3 class="category">Bug fixes</h3><ul class="entries">
+<li class="minor"><span class="title">Edit book: Fix a crash when editing CSS files caused by a behavior change in Qt 5.13.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1846760" target="_blank">1846760</a></p>
+</li>
+<li class="minor"><span class="title">Fix a regression in 4.0 that broke rendering of PDF covers for PDF files that used JPEG2000 compression.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1847567" target="_blank">1847567</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix a regression in 4.1 that broke creating new color schemes</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1847407" target="_blank">1847407</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix error while viewing books with a comment after a &lt;meta&gt; tag.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1847977" target="_blank">1847977</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix an error when processing a CFI with an invalid text offset.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1848320" target="_blank">1848320</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix scrolling backwards to previous chapter not always scrolling to the end of the chapter, if the chapter loads external resources.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1847818" target="_blank">1847818</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix hang on books with namespaced attributes on &lt;html&gt; that do not belong to a known ebook namespace.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1846886" target="_blank">1846886</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix search history not persisting between viewer restarts.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1847976" target="_blank">1847976</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix scrollbar showing up on initial book open even if disabled in preferences.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1847323" target="_blank">1847323</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix rendering of books with mathematics failing</span>
+</li>
+<li class="minor"><span class="title">Viewer: When changing between individual sections/chapters in the book, only render the new chapter after loading is complete</span>
+</li>
+<li class="minor"><span class="title">Viewer: Fix scrolling by screenfuls not working correctly in flow mode</span>
+</li>
+<li class="minor"><span class="title">EPUB 2 metadata: Fix obfuscated fonts being broken when updating metadata if the file uses Adobe font obfuscation and the identifier with the key has an uppercase UUID scheme name.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1847890" target="_blank">1847890</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix right clicking on margins not showing controls</span>
+</li>
+<li class="minor"><span class="title">Viewer: Preselect text in search box when showing it.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1847677" target="_blank">1847677</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix SVG images that use xlink:href to refer to paths not being displayed.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1847181" target="_blank">1847181</a></p>
+</li>
+<li class="minor"><span class="title">Content server: Fix detection of iOS on iPAD with iOS 13 which defaults to desktop mode</span>
+</li>
+<li class="minor"><span class="title">Metadata jacket: Fix &lt;br&gt; tags in the comments not being rendered correctly when inserting the comments into the jacket page.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1848327" target="_blank">1848327</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Show nicer error message for DRMed books</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1847468" target="_blank">1847468</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix preferences under Scrolling behavior not being saved correctly</span>
+</li>
+<li class="minor"><span class="title">Viewer: Fix remembered position sometimes off by one page in paged mode.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1847322" target="_blank">1847322</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: restrict max size of margin page turn indicators to 25px rather than 75px</span>
+</li>
+<li class="minor"><span class="title">Viewer: Don't flash the home page before loading a book if a book has been specified</span>
+</li>
+<li class="minor"><span class="title">Viewer: Fix Ctrl+M shortcut not working on Windows</span>
+</li>
+<li class="minor"><span class="title">Content server: Fix regression that caused series name in book details view not not be blue to indicate it is clickable</span>
+</li>
+</ul>
+<h3 class="category">Improved news sources</h3>
+<ul class="entries">
+<li>Various Polish news sources</li>
+<li>Il Sole 24 Ore</li>
+</ul>
+        </div>
+        
+        <div class="release">
+            <h2 class="release-title">Release: 4.1 [07 Oct, 2019]</h2>
+<h3 class="category">New features</h3><ul class="entries">
+<li class="minor"><span class="title">Viewer: Add an option to have a scrollbar (under Scrolling in the viewer preferences)</span>
+</li>
+<li class="minor"><span class="title">Viewer: Allow showing the 'position in book', as was displayed in the top left of the viewer in calibre 3, in the header or footer of the viewer.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1846700" target="_blank">1846700</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Add options to control scrolling using the mouse in paged mode.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1846800" target="_blank">1846800</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Allow copying images by right clicking on them.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1846903" target="_blank">1846903</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Add a preference under Miscellaneous to allow only a single instance of the viewer</span>
+</li>
+<li class="minor"><span class="title">Viewer: Add keyboard shortcuts to toggle between paged mode and flow mode and to quit</span>
+</li>
+<li class="minor"><span class="title">Content server: Make the book size useable in custom book list templates.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1846839" target="_blank">1846839</a></p>
+</li>
+<li class="minor"><span class="title">Edit metadata: Use a border rather than background color to indicate correct title and author sort values. Works better with dark themes.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1846967" target="_blank">1846967</a></p>
+</li>
+<li class="minor"><span class="title">Kobo driver: Support for new firmware</span>
+</li>
+</ul>
+<h3 class="category">Bug fixes</h3><ul class="entries">
+<li class="minor"><span class="title">Viewer: Fix a couple of bugs in flow mode. Scrolling to anchors was not working and remembering last read position was not working</span>
+</li>
+<li class="minor"><span class="title">Viewer: Fix text after comments not being rendered. Note that the book has to be reloaded if already viewed for the fix to apply.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1846875" target="_blank">1846875</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix loading progress screen sometimes getting stuck if changing pages rapidly.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1846751" target="_blank">1846751</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix failing to open books if path to cache contains symbolic links.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1846834" target="_blank">1846834</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: When restoring from fullscreen go back to maximized state if window was maximized when entering full screen.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1846753" target="_blank">1846753</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix shortcut changes not being applied after pressing OK if shortcut list is closed by pressing Esc.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1846765" target="_blank">1846765</a></p>
+</li>
+<li class="minor"><span class="title">Fix a regression that broke reading metadata from ODT files that do not have keywords.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1846828" target="_blank">1846828</a></p>
+</li>
+<li class="minor"><span class="title">PDF Output: Fix a bug that prevented the first style property in the header or footer template from being applied</span>
+</li>
+<li class="minor"><span class="title">PDF Output: Fix error with a few embedded TTF fonts.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1846982" target="_blank">1846982</a></p>
+</li>
+<li class="minor"><span class="title">Edit book: Font manager: Fix removing embedded font failing if @font-face rule has no src.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1847052" target="_blank">1847052</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Hide the browser provided scrollbar that flashes momentarily on page load.</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1846922" target="_blank">1846922</a></p>
+</li>
+<li class="minor"><span class="title">Viewer: Fix clicking on margins causing keyboard shortcuts to not work until the main text is clicked on again</span>
+</li>
+<li class="minor"><span class="title">Comments editor: Workaround for Qt converting ids into anchors</span>
+</li>
+<li class="minor"><span class="title">Possible workaround for some Windows machines where the viewer is getting access denied errors while renaming a folder</span>
+</li>
+<li class="minor"><span class="title">Viewer: When there is empty text for an header footer section render it as blank instead of moving the remaining sections to the left</span>
+</li>
+</ul>
+<h3 class="category">Improved news sources</h3>
+<ul class="entries">
+<li>Fortune Magazine</li>
+</ul>
+        </div>
+        
+    </div>
+
+    <div class="pane">
+        <ul class="major-features">
+<li class="major"><span class="title">E-book viewer: Add a "Read aloud" function that works via the operating system's Text-to-speech engine. [5.7.2]</span>
+<p class="description">Click the "Read aloud" button in the viewer controls to start reading the book text aloud from the current page.</p>
+</li>
+<li class="major"><span class="title">Support the calibre:// URL scheme [5.5]</span>
+<p class="description">Clicking on calibre:// URLs can be used to have calibre perform various actions. For details, see: <a href="https://manual.calibre-ebook.com/url_scheme.html">https://manual.calibre-ebook.com/url_scheme.html</a></p>
+</li>
+<li class="major"><span class="title">For details on the major changes in calibre between 4.0 and 5.0, see <a href="https://calibre-ebook.com/new-in/fourteen">https://calibre-ebook.com/new-in/fourteen</a> [5.0.1]</span>
+</li>
+<li class="major"><span class="title">E-book viewer: Add support for highlighting [5.0.1]</span>
+<p class="description"><a href="https://manual.calibre-ebook.com/viewer.html#highlighting-text">https://manual.calibre-ebook.com/viewer.html#highlighting-text</a></p>
+</li>
+<li class="major"><span class="title">E-book viewer: Add support for right-to-left and vertical text [5.0.1]</span>
+</li>
+<li class="major"><span class="title">Switch calibre to Python 3. This means that some no longer maintained third party plugins will not work. See <a href="https://www.mobileread.com/forums/showthread.php?t=326405">https://www.mobileread.com/forums/showthread.php?t=326405</a> [5.0.1]</span>
+</li>
+<li class="major"><span class="title">Viewer: Much improved search functionality [4.9.1]</span>
+<p class="tickets">Closes tickets: <a href="https://bugs.launchpad.net/calibre/+bug/1834247" target="_blank">1834247</a></p>
+<p class="description">Now all matches are displayed when searching in a side bar with a few words of context. Also supports searching using regular expressions.</p>
+</li>
+<li class="major"><span class="title">Windows 10: Add support for dark mode. [4.6]</span>
+<p class="description">If you turn on dark mode under the Windows Settings-&gt;Personalisation-&gt;Colors and restart calibre it will use dark colors. Can also be enabled by setting the CALIBRE_USE_DARK_PALETTE environment variable.</p>
+</li>
+</ul>
+    </div>
+
+</div>
+<p id="full-list">The full list of changes to calibre is available <a href="https://github.com/kovidgoyal/calibre/commits/master">here</a>.</p>
+
+        </div> <!-- end content -->
+        <ul id="footer">
+            <li>&copy; Kovid Goyal</li>
+            
+            <li><a type="application/rss+xml" href="/changelog.rss" title="RSS feed of the calibre changelog">Feed of new releases</a></li>
+            
+            <li class="last"><a href="https://cs-website.herokuapp.com/" title="Centresource Interactive Agency">Design by Centresource Interactive Agency</a></li>
+        </ul>
+    </div> <!-- end content-wrapper -->
+    <div id="sidebar">
+        
+        
+        
+        <div id="ad-container">
+<div align="center" id="calibre-ebook_rail_right_1">
+  <script data-cfasync="false" type="text/javascript">
+      freestar.config.enabled_slots.push({ placementName: "calibre-ebook_rail_right_1", slotId: "calibre-ebook_rail_right_1" });
+  </script>
+</div>
+<div style="display:inline-block;width:336px; height:20px">&nbsp;</div>
+<div align="center" id="calibre-ebook_rail_right_2">
+  <script data-cfasync="false" type="text/javascript">
+      freestar.config.enabled_slots.push({ placementName: "calibre-ebook_rail_right_2", slotId: "calibre-ebook_rail_right_2" });
+  </script>
+</div>
+</div>
+        
+        
+    </div> <!-- end sidebar -->
+    
+    <div id="donate_box" style="display:none" data-location="loc_unknown">
+
+
+<style type="text/css"> 
+
+#donate_box {
+    z-index: 10001;
+    background-color: #eee;
+    color: #000;
+    padding: 10px;
+    width: 675px;
+    max-width: 80%;
+    border: 2px solid #666;
+    box-shadow:0 0 90px 5px #000;
+    border-radius: 6px;
+}
+
+#donate_box .close {
+    background-image:url(/resources/img/close.png);
+    position:absolute;
+    right:-15px;
+    top:-15px;
+    cursor:pointer;
+    height:24px;
+    width:24px;
+}
+
+#donate_box h2 {
+    text-align: center;
+    font-size: xx-large;
+    margin-top: -0.2em;
+    color: #666;
+    background-color: #ddd;
+    border-radius: 6px;
+    margin-bottom: 0.5em;
+}
+
+#donate_box h2:before {
+    content: "♥ ";
+    color: red;
+}
+#donate_box h2:after {
+    content: " ♥";
+    color: red;
+}
+#donate_box .donate_line {
+    background-color: rgb(217, 237, 247);
+    color: rgb(58, 135, 173);
+    border: solid 1px rgb(188, 232, 241);
+    padding: 0.5em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+#donate_box .donate_line input {
+    border: solid 1px rgba(82, 168, 236, 0.8) !important;
+    padding: 5px 0px;
+    padding-left: 3px;
+    border-radius: 4px;
+    width: 5em;
+}
+
+#donate_box #donate_ok_button {
+    float: right;
+    margin-top: 12px;
+}
+
+#donate_box #donate_bt_button {
+    float: left;
+    text-decoration: none;
+    margin-top: 12px;
+    padding: 9px 2px;
+}
+
+#donate_box div {
+    margin-top: 0.5em;
+}
+
+#donate_box #donate_wait_msg  {
+    text-align: center;
+    margin-top: 1em;
+}
+
+#donate_box #donate_wait_msg img {
+    vertical-align: middle;
+}
+
+</style>
+
+
+
+    <h2>Thank you!</h2>
+    <p>Your support helps keep calibre development alive.</p>
+    <p class="donate_line">
+        Contribute 
+        <input name="price" type="number" value="10" step="1" min="1" />
+        <select id="donate-contribute-currency" required="required" data-val="USD">
+            <option value="USD">USD ($)</option>
+            <option value="INR">INR (₹)</option>
+        </select>
+    </p>
+    <p class="donate_radio">Amount:
+    <label><input type="radio" value="5" name="price_choice" /> <span>$5</span> </label>&nbsp;
+    <label><input type="radio" value="10" name="price_choice" checked="checked" /> <span>$10</span> </label>&nbsp;
+    <label><input type="radio" value="15" name="price_choice" /> <span>$15</span> </label>&nbsp;
+    <label><input type="radio" value="25" name="price_choice" /> <span>$25</span> </label>&nbsp;
+    <label><input type="radio" value="50" name="price_choice" /> <span>$50</span> </label>&nbsp;
+    <label><input type="radio" value="100" name="price_choice" /> <span>$100</span> </label>
+    </p>
+    <div id="donate_wait_msg"><img src="/resources/img/spinner.gif" alt="Working" />&nbsp;Contacting payment provider, please wait&hellip;</div>
+    <div id="donate_buttons">
+        <a id="donate_bt_button" href="https://www.patreon.com/kovidgoyal">
+            Become a calibre patron
+        </a>
+        <span id="donate_ok_button" tooltip="Pay with credit card or PayPal"><span style="color:red">PayPal unavailable!</span></span>
+    </div>
+
+
+
+<script src="https://www.paypalobjects.com/api/checkout.min.js" async="async" id="paypal-checkout-script"></script>
+<script type="text/javascript">
+
+(function() {
+
+    function change_currency() {
+        var curr = document.getElementById('donate-contribute-currency').value;
+        if (curr === document.getElementById('donate-contribute-currency').dataset.val) return; 
+        var mult = curr === 'INR' ? 20 : 1/20;
+        var symbol = curr === 'INR' ? '₹' : '$';
+        var text_input = document.querySelector('#donate_box input[name="price"]');
+        text_input.value = '' + Math.max(1, parseFloat(text_input.value) * mult);
+        document.querySelectorAll('#donate_box input[name="price_choice"').forEach(function(node) {
+            var rval = '' + (parseInt(node.value) * mult);
+            node.value = rval; 
+            node.parentNode.querySelector('span').textContent = symbol + rval;
+        });
+        document.getElementById('donate-contribute-currency').dataset.val = curr;
+    }
+    document.getElementById('donate-contribute-currency').addEventListener('change', change_currency);
+
+    var x = new XMLHttpRequest();
+    x.addEventListener('load', function() {
+        if (this.responseText === 'IND' || this.responseText === 'IN') {
+            document.getElementById('donate-contribute-currency').value = 'INR';
+            change_currency();
+        }
+    });
+    var cc = 'country-code';
+    x.open('GET', '/' + cc);
+    x.send();
+
+    function get_current_value() {
+        var ans = parseFloat($('#donate_box input[name="price"]').val());
+        if (isNaN(ans)) ans = 10;
+        return ans;
+    }
+
+    document.getElementById('paypal-checkout-script').onload = function() {
+        if (!window.paypal) return;
+        // See https://developer.paypal.com/docs/api/payments/#payment
+        var lang = document.documentElement.getAttribute('lang');
+        var locale = 'en_US';
+        var locale_map = {fr: 'fr_FR', de: 'de_DE', es: 'es_ES'}
+        if (locale_map[lang]) locale = locale_map[lang];
+        document.getElementById('donate_ok_button').textContent = '';
+        window.paypal.Button.render({
+            env: 'production',  // sandbox or production
+            client: {
+                sandbox: 'AcbgAJCOt1wze9Xwh8ijAEIQOck5Ykz_UhA3jTtfPjdcl5bOPIgwz7k2E33oJ_24QZe59_gQZIFnvr6n',
+                production: 'AbVJy1AqjPTncpdEQteWqVN-DdULUR9vtpvEKQMAof4SFoiuiuAACRd0fjNvvTsZPnQy3Enai5lmdm1A'
+            },
+            commit: true,
+            style: { tagline: false, label: 'pay'},
+            locale: locale,
+
+            payment: function(data, actions) {
+                $('#donate_box #donate_wait_msg').css('display', 'block');
+                $('#donate_box #donate_buttons').css('display', 'none');
+                return actions.payment.create({
+                    payment: {
+                        application_context: {
+                            shipping_preference: "NO_SHIPPING",
+                            locale: locale,
+                            brand_name: 'calibre - Kovid Goyal',
+                        },
+                        // Disabled as it causes an intrusive popup on the payment page.
+                        // note_to_payer: 'Thank you for supporting calibre!',
+                        transactions: [
+                            {
+                                amount: { 
+                                    total: get_current_value().toFixed(2), 
+                                    currency: document.getElementById('donate-contribute-currency').value
+                                },
+                                description: 'Support calibre development: ' + document.getElementById('donate_box').dataset.location,
+                            }
+                        ]
+                    }
+                });
+            },
+
+            onAuthorize: function(data, actions) {
+                return actions.payment.execute().then(function(response) {
+                    $('#donate_box .close').click();
+                    alert('Payment successful! Thank you for your support.');
+                });
+            },
+
+            onCancel: function(data, actions) {
+                $('#donate_box .close').click();
+            },
+
+            onError: function(data, actions) {
+                alert('Payment failed!');
+            }
+        }, '#donate_ok_button');
+    }
+
+    $(document).ready(function() {
+        $("[rel='#donate_box']").each(function() {
+            var loc = this.getAttribute('data-location');
+            if (!loc) loc = 'loc_unknown';
+            $(this).overlay({
+            expose: $("#donate_box").css('background-color'), // change to mask for jquery.tools >= 1.2
+
+            closeOnClick: false, // Prevent clicking outside from closing the dialog
+
+            onBeforeLoad: function() { 
+                $('#donate_box #donate_wait_msg').css('display', 'none'); 
+                $('#donate_box #donate_buttons').css('display', 'block'); 
+            },
+
+            onLoad: function() {
+                document.getElementById('donate_box').dataset.location = loc;
+                // Keep the box at a fixed position in the viewport (this can be removed when updating jquery.tools to 1.2 as it is the default)
+                $('#donate_box').css('position', 'fixed');
+            },
+
+            top: "5%"
+            });
+        });
+
+        var sync_from_radio = true;
+        // The change() function does not work on IE
+        $('#donate_box input[name="price_choice"]').click(function() {
+            if (sync_from_radio) $('#donate_box input[name="price"]').val(this.value);
+        });
+
+        $('#donate_box input[name="price"]').change(function() {
+            var val = get_current_value();
+            var found = null;
+            if (val % 1 === 0) {
+                // Number is an integer
+                var elem = $('#donate_box input[name="price_choice"][value="' + val.toFixed() + '"]');
+                if (elem.length > 0) {
+                    found = elem;
+                }
+            }
+            sync_from_radio = false;
+            if (found === null) {
+                $('#donate_box input[name="price_choice"]').each(function() { this.checked = false; });
+            } else { found[0].checked = true; }
+            sync_from_radio = true;
+                
+        });
+
+
+        $('#donate_box input[name="price"]').keypress(function(event) {
+            if (event.which == 13) $('#donate_box #donate_ok_button').click();
+        });
+    });
+
+})();
+
+</script>
+
+
+</div>
+    
+
+    <div id="language-box">
+    <script>
+$(document).ready(function() { 
+        $("#primary-nav a[title]").tooltip({
+            position : 'bottom center',
+            }); 
+        $("#donate").tooltip({
+            position : 'bottom center',
+            }); 
+
+});
+
+function choose_language() {
+    document.getElementById('language-box').style.display = 'flex';
+}
+
+function close_language() {
+    document.getElementById('language-box').style.display = 'none';
+}
+    </script>
+<style>
+#language-box {
+    display: none;
+    position: absolute;
+    z-index: 3000;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.9);
+    justify-content: center;
+    align-items: center;
+}
+
+#language-box h2 {
+    font-weight: bold;
+    font-size: 160%;
+    margin-bottom: 1rem;
+}
+
+#language-box li {
+    margin-bottom: 1ex;
+}
+
+</style>
+        <div>
+            <h2>Choose the language you want</h2>
+            <ul>
+                
+                <li><a href="/pt_BR/whats-new">Brazilian Portuguese (Português Brasileiro)</a></li>
+                
+                <li><a href="/da/whats-new">Danish (Dansk)</a></li>
+                
+                <li><a href="javascript:close_language()">English</a></li>
+                
+                <li><a href="/et/whats-new">Estonian (eesti)</a></li>
+                
+                <li><a href="/fr/whats-new">French (Français)</a></li>
+                
+                <li><a href="/it/whats-new">Italian (Italiano)</a></li>
+                
+                <li><a href="/pt/whats-new">Portuguese (Português)</a></li>
+                
+                <li><a href="/ru/whats-new">Russian (русский)</a></li>
+                
+                <li><a href="/zh_CN/whats-new">Simplified Chinese (简体中文)</a></li>
+                
+                <li><a href="/es/whats-new">Spanish (Español)</a></li>
+                
+                <li><a href="/sv/whats-new">Swedish (Svenska)</a></li>
+                
+                <li><a href="/uk/whats-new">Ukrainian (українська)</a></li>
+                
+            </ul>
+        </div>
+    </div>
+<!-- end languages -->
+ 
+
+</div></body>
+</html>
