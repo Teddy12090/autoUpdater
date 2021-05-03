@@ -50,8 +50,8 @@ class CalibreVersionChecker(VersionChecker):
 
         if program_folder:
             output = subprocess.check_output([f'{program_folder}/calibre-customize.exe', '--version'], encoding='utf-8')
-            version = re.search(r'\(calibre (?P<version>\d+\.\d+)\)', output).group('version')
-            return version
+            version = re.search(r'\(calibre (?P<version>\d+\.\d+(\.\d+)?)\)', output).group('version')
+            return version if re.match(r'\d+\.\d+\.\d+', version) else f'{version}.0'
 
     @cached_property
     def platform(self) -> Platform:
